@@ -9,7 +9,4 @@ public class VisualVmExample {
         while(true){}
     }
 
-    public static class MyClass {
-        String s = "mystring";
-    }
 }
