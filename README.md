@@ -1,2 +1,2 @@
 # Java Beginning Course
-These are the course materials for introduction for Java Programming Language
+These are the course materials for introduction to Java Programming Language
