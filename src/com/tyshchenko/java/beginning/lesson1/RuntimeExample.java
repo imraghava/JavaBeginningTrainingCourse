@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson1;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class RuntimeExample {
     public static void main(String[] args) {

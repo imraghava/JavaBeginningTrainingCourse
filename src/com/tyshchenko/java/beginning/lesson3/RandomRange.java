@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson3;
 import java.util.Random;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class RandomRange {
     public static void main(String[] args) {

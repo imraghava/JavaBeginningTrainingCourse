@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson3;
 import java.util.Arrays;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class ArrayCopyOfExample {
     public static void main(String[] args) {

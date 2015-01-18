@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson3;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class TwoDimensionalArray {
     public static void main(String[] args) {

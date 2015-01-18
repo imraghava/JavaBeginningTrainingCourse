@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson5;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class AssertionExample2 {
     public static void main(String[] args) {

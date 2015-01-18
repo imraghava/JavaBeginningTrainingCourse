@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson2;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class ScopeExample2 {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class ScopeExample2 {
             {
                 int a =10;
                 {
-                    System.out.println("a=" + a);
+                    System.out.println("a = " + a);
                 }
             }
         }

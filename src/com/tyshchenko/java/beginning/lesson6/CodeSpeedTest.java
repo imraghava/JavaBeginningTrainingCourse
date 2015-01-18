@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson6;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class CodeSpeedTest {
     public static void main(String[] args) {

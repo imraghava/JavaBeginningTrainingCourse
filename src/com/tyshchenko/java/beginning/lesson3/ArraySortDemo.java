@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson3;
 import java.util.Arrays;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class ArraySortDemo {
     public static void main(String[] args) {

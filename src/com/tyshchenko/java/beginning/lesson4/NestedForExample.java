@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson4;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class NestedForExample {
     public static void main(String[] args) {

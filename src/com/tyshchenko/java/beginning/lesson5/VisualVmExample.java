@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson5;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class VisualVmExample {
     public static void main(String[] args) {

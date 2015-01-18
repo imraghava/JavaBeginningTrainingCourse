@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson3;
 import java.io.UnsupportedEncodingException;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class StringConverter {
     public static void printBytes(byte[] array, String name) {

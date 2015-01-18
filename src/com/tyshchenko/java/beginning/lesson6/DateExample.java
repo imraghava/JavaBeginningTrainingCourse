@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class DateExample {
     public static void main(String[] args) {

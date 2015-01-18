@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson1;
 import java.util.Map;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class SystemProperties {
     public static void main(String[] args) {

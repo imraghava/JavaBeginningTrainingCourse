@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson6;
 import java.text.MessageFormat;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class MakeACallFromIphone {
     public static void main(String[] args) {

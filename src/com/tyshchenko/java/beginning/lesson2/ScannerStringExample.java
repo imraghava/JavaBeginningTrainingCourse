@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson2;
 import java.util.Scanner;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class ScannerStringExample {
 

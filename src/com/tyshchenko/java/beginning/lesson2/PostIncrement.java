@@ -1,7 +1,7 @@
 package com.tyshchenko.java.beginning.lesson2;
 
 /**
- * author Alexander Tyshchenko.
+ * @author Alexander Tyshchenko.
  */
 public class PostIncrement {
     public static void main(String[] args) {
