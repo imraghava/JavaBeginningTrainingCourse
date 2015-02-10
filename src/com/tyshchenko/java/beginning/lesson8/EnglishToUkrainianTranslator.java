@@ -12,11 +12,11 @@ public class EnglishToUkrainianTranslator {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Please, enter ukrainian word: ");
-            result = translateFromRussian(dictionary, scanner.nextLine());
+            result = translateFromUkrainian(dictionary, scanner.nextLine());
             System.out.println("English translate: " + result);
         }
     }
-    public static String translateFromRussian(String dictionary, String ukrainianWord){
+    public static String translateFromUkrainian(String dictionary, String ukrainianWord){
        String[] pair = dictionary.split(",");
         String[] englishWords = new String[pair.length];
         String[] ukrainianWords = new String[pair.length];
