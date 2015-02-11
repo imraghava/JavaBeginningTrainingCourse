@@ -3,7 +3,7 @@ package com.tyshchenko.java.beginning.lesson8;
 /**
  * @author Alexander Tyshchenko.
  */
-public class CountSimvols {
+public class CheckParenthesesInExpression {
 
     public static void main(String[] args) {
         String s = "(x – 8)+a(y – 1)";
