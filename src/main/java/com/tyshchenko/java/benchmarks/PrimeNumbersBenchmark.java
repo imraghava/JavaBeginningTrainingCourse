@@ -16,30 +16,30 @@ public class PrimeNumbersBenchmark {
     @Benchmark
     @BenchmarkMode(value = Mode.AverageTime)
     public void generatePrimesWithOptimization() {
-        String primes = "";
+        StringBuilder primes = new StringBuilder();
 
-        label:  for (int i = 2; i <= 100_000; i++) {
+        label:  for (int i = 2; i <= 10_000; i++) {
                     for (int j = 2; j < i; j++) {
                         if ((i % j) == 0) {
                             continue label;
                         }
                     }
-                    primes += i + " ";
-        }
+                    primes.append(i).append(" ");
+                }
     }
 
     @Benchmark
     @BenchmarkMode(value = Mode.AverageTime)
     public void generatePrimesWithoutOptimization() {
-        String primes = "";
+        StringBuilder primes = new StringBuilder();
         boolean flag;
-        for (int i = 2; i <= 100_000; i++) {
+        for (int i = 2; i <= 10_000; i++) {
             flag = true;
             for (int j = 2; j < i; j++) {
                 flag = flag & (i % j > 0);
             }
             if (flag)
-                primes += i + " ";
+                primes.append(i).append(" ");
         }
     }
 
