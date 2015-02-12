@@ -19,6 +19,12 @@ public class Rectangle extends Figure {
         this(0, 0);
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
     public int square() {
         return this.height * this.width;
     }

@@ -5,6 +5,8 @@ package com.tyshchenko.java.oop.lesson1;
  */
 public abstract class Figure {
 
+    public abstract String getName();
+
     public abstract int square();
 
 }
