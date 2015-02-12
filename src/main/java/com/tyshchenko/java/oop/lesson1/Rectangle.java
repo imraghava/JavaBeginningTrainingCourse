@@ -21,7 +21,7 @@ public class Rectangle extends Figure {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
