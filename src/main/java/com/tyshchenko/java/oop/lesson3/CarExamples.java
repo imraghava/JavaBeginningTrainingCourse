@@ -1,16 +1,16 @@
 package com.tyshchenko.java.oop.lesson3;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * @author Alexander Tyshchenko.
  */
 public class CarExamples {
+
     public static void main(String[] args) throws IOException {
-        BufferedReader d = new BufferedReader(new InputStreamReader(System.in));
-        String s = d.readLine();
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
 
         Car c = new Car();
         System.out.println(c.getName());
@@ -24,31 +24,40 @@ public class CarExamples {
 
         System.out.println(c.getName());
     }
+
 }
 
 class Car {
+
     public String getName() {
         return "car";
     }
+
 }
 
 class BMW extends Car {
+
     @Override
     public String getName() {
         return "BMW";
     }
+
 }
 
 class Lada extends Car {
+
     @Override
     public String getName() {
         return "Lada";
     }
+
 }
 
 class BMW_M extends BMW {
+
     @Override
     public String getName() {
         return super.getName() + "_M";
     }
+
 }
