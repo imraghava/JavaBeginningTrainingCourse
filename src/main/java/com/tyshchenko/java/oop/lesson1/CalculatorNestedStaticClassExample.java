@@ -7,6 +7,9 @@ public class CalculatorNestedStaticClassExample {
 
     public static void main(String[] args) {
         System.out.println(CalculatorNestedStaticClassExample.Operation.MINUS.eval(2.0, 1.1));
+
+        CalculatorNestedStaticClassExample calculator = new CalculatorNestedStaticClassExample();
+        System.out.println(calculator.calculate(2.0, 1.1, CalculatorNestedStaticClassExample.Operation.MINUS));
     }
 
     public static abstract class Operation {
@@ -20,7 +23,7 @@ public class CalculatorNestedStaticClassExample {
             return this.name;
         }
 
-        abstract double eval(double x, double y);
+        public abstract double eval(double x, double y);
 
         public static final Operation PLUS = new Operation("+") {
             public double eval(double x, double y) {
@@ -29,26 +32,26 @@ public class CalculatorNestedStaticClassExample {
         };
 
         public static final Operation MINUS = new Operation("-") {
-            double eval(double x, double y) {
+            public double eval(double x, double y) {
                 return x - y;
             }
         };
 
-        public static final Operation TIMES = new Operation("*") {
-            double eval(double x, double y) {
+        public static final Operation MULTIPLY = new Operation("*") {
+            public double eval(double x, double y) {
                 return x * y;
             }
         };
 
         public static final Operation DIVIDE = new Operation("/") {
-            double eval(double x, double y) {
+            public double eval(double x, double y) {
                 return x / y;
             }
         };
 
     }
 
-    public double calculate(double x, Operation op, double y) {
+    public double calculate(double x, double y, Operation op) {
         return op.eval(x, y);
     }
 }
