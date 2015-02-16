@@ -28,27 +28,28 @@ public class ExceptionsExample {
     }
 
     public static class Rectangle {
-        private int height, width;
+        private int height;
+        private int width;
 
-        public void setHeight(int h) throws HeightException {
-            if (h < 0)
+        public void setHeight(int height) throws HeightException {
+            if (height < 0)
                 throw new HeightException("wrong height");
-            height = h;
+            this.height = height;
         }
 
-        public void setWidth(int w) throws WidthException {
-            if (w < 0)
+        public void setWidth(int width) throws WidthException {
+            if (width < 0)
                 throw new WidthException("wrong width");
-            width = w;
+            this.width = width;
         }
     }
 
     public static void main(String[] args) {
-        Rectangle r = new Rectangle();
+        Rectangle rectangle = new Rectangle();
 
         try {
-            r.setHeight(10);
-            r.setWidth(-5);
+            rectangle.setHeight(10);
+            rectangle.setWidth(-5);
         } catch (HeightException e) {
             System.out.println(e.getMessage());
         } catch (WidthException e) {
@@ -56,8 +57,8 @@ public class ExceptionsExample {
         }
 
         try {
-            r.setHeight(-9);
-            r.setWidth(-5);
+            rectangle.setHeight(-9);
+            rectangle.setWidth(-5);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
