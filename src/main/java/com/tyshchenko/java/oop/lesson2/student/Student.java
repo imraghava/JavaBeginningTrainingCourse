@@ -1,5 +1,6 @@
 package com.tyshchenko.java.oop.lesson2.student;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -9,9 +10,9 @@ import java.util.Date;
 public class Student {
 	private String name;
 	private String surname;
-	private Date birth;
+	private LocalDate birth;
 	
-	public Student(String name, String surname, Date birth) {
+	public Student(String name, String surname, LocalDate birth) {
 		this.name = name;
 		this.surname = surname;
 		this.birth = birth;
@@ -33,11 +34,11 @@ public class Student {
 		this.surname = surname;
 	}
 	
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 	
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
