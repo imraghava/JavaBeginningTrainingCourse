@@ -10,19 +10,19 @@ public class CarExamples {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
+        String str = scanner.nextLine();
 
-        Car c = new Car();
-        System.out.println(c.getName());
+        Car car = new Car();
+        System.out.println(car.getName());
 
-        if (s.equals("1"))
-            c = new BMW();
-        else if (s.equals("2"))
-            c = new BMW_M();
+        if (str.equals("1"))
+            car = new BMW();
+        else if (str.equals("2"))
+            car = new BMW_M();
         else
-            c = new Lada();
+            car = new Lada();
 
-        System.out.println(c.getName());
+        System.out.println(car.getName());
     }
 
 }

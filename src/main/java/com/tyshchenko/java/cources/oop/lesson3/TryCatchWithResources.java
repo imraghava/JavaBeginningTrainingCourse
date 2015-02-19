@@ -1,5 +1,6 @@
 package com.tyshchenko.java.cources.oop.lesson3;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,12 +33,15 @@ public class TryCatchWithResources {
 
     private static void printFileJava7() {
 
-        try(FileInputStream input = new FileInputStream(filePath)) {
+        try(
+                FileInputStream input = new FileInputStream(filePath);
+                BufferedInputStream bufferedInput = new BufferedInputStream(input);
+        ) {
 
-            int data = input.read();
+            int data = bufferedInput.read();
             while(data != -1) {
                 System.out.print((char) data);
-                data = input.read();
+                data = bufferedInput.read();
             }
         } catch (IOException e) {
             e.printStackTrace();
