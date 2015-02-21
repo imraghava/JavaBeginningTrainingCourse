@@ -1,4 +1,4 @@
-package com.tyshchenko.java.cources.oop.lesson3;
+package com.tyshchenko.java.cources.oop.lesson3.exceptions;
 
 /**
  * @author Alexander Tyshchenko.

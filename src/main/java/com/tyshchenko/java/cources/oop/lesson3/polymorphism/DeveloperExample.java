@@ -1,4 +1,4 @@
-package com.tyshchenko.java.cources.oop.lesson3.developer;
+package com.tyshchenko.java.cources.oop.lesson3.polymorphism;
 
 /**
  * @author Alexander Tyshchenko.

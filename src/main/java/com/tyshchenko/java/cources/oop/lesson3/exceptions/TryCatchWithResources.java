@@ -1,4 +1,4 @@
-package com.tyshchenko.java.cources.oop.lesson3;
+package com.tyshchenko.java.cources.oop.lesson3.exceptions;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
