@@ -17,7 +17,7 @@ public class IOExceptionExample {
         }
     }
 
-    private static void createFileWithThrows() throws IOException {
+    private static void createFileWithThrows() throws IOException, ArithmeticException, ClassCastException {
         File f = File.createTempFile("test", ".dat");
         System.out.println(f.getCanonicalPath());
     }
