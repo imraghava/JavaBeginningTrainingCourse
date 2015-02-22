@@ -1,5 +1,7 @@
 package com.tyshchenko.java.training.oop.lesson5.io;
 
+import com.tyshchenko.java.training.oop.Constants;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -10,9 +12,8 @@ public class FileInputStreamExample {
 
     public static void main(String[] args) {
         int size;
-        String path = "/work/work/workspace/idea/JavaTrainingCourse/src/main/java/com/tyshchenko/java/training/oop/lesson5/io/" + FileInputStreamExample.class.getSimpleName() + "java";
 
-        try ( FileInputStream fis = new FileInputStream(path) ) {
+        try ( FileInputStream fis = new FileInputStream(Constants.FILE_PATH + "/FileInputStreamExample.java") ) {
 
             System.out.println("Total Available Bytes: " +
                     (size = fis.available()));

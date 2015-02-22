@@ -1,5 +1,7 @@
 package com.tyshchenko.java.training.oop.lesson5.io;
 
+import com.tyshchenko.java.training.oop.Constants;
+
 import java.io.File;
 
 /**
@@ -8,7 +10,7 @@ import java.io.File;
 public class DirectoryListExample {
 
     public static void main(String[] args) {
-        String dirName = "/work/work";
+        String dirName = Constants.FILE_PATH;
         File file = new File(dirName);
 
         if (file.isDirectory()) {

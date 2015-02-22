@@ -30,6 +30,8 @@ public class FileSearcher {
             for (String file : files) {
                 System.out.println(file);
             }
+            // JAVA 8
+            //files.forEach((file) -> System.out.println(file));
         } catch (IOException e) {
             e.printStackTrace();
         }

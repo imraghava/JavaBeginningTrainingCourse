@@ -1,5 +1,7 @@
 package com.tyshchenko.java.training.oop.lesson5.io;
 
+import com.tyshchenko.java.training.oop.Constants;
+
 import java.io.File;
 
 /**
@@ -12,8 +14,7 @@ public class FileExample {
     }
 
     public static void main(String[] args) {
-        //
-        File file = new File("/work/work/SonarQubeAsCi.pdf");
+        File file = new File(Constants.FILE_PATH + "/FileInputStreamExample.java");
 
         print("File Name: " + file.getName());
         print("Path: " + file.getPath());
