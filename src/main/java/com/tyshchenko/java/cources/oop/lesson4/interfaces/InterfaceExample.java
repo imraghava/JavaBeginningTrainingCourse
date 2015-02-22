@@ -1,4 +1,4 @@
-package com.tyshchenko.java.cources.oop.lesson4;
+package com.tyshchenko.java.cources.oop.lesson4.interfaces;
 
 /**
  * @author Alexander Tyshchenko.
@@ -85,7 +85,7 @@ class Rectangle extends Shape implements Colored {
 public class InterfaceExample {
     public static void main(String[] args) {
         WithWeight ww = new Hamburger();
-        System.out.println("Humburget weight = " + ww.getWeight());
+        System.out.println("Hamburger weight = " + ww.getWeight());
 
         ww = new Toy();
         System.out.println("Toy weight = " + ww.getWeight());
@@ -98,11 +98,11 @@ public class InterfaceExample {
         Car car = new BMW();
         System.out.println("Car weight: " + car.getWeight());
 
-        Colored c = (Colored)car;
+        Colored c = car;
         System.out.println("Car color: " + c.getColor());
 
         Hamburger h = new Hamburger();
         c = (Colored)h; // ClassCastException !!!
-        System.out.println("Humburger color: " + c.getColor());
+        System.out.println("Hamburger color: " + c.getColor());
     }
 }
