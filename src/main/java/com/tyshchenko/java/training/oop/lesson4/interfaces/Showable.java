@@ -7,7 +7,7 @@ public interface Showable {
 
     void show();
 
-    interface Message{
+    interface Message {
 
         void msg();
 
