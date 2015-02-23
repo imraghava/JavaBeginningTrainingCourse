@@ -7,7 +7,7 @@ interface Colored {
     static final int RED = 0;
     static final int BLUE = 1;
     static final int YELLOW = 2;
-    int getColor();
+    public int getColor();
 }
 
 interface WithWeight {
