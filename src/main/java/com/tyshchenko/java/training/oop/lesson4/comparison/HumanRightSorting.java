@@ -8,7 +8,12 @@ import java.util.Arrays;
 public class HumanRightSorting {
 
     public static void main(String[] args) {
-        HumanRight[] humans = {new HumanRight(40), new HumanRight(20), new HumanRight(3), new HumanRight(7)};
+        HumanRight[] humans = {
+                new HumanRight(40),
+                new HumanRight(20),
+                new HumanRight(3),
+                new HumanRight(7)
+        };
 
         Arrays.sort(humans);
 

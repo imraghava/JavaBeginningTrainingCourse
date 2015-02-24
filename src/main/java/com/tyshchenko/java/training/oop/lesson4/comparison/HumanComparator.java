@@ -8,14 +8,12 @@ import java.util.Comparator;
 public class HumanComparator implements Comparator<Human> {
 
     @Override
-    public int compare(Human o1, Human o2) {
-        Human h1 = (Human)o1;
-        Human h2 = (Human)o2;
-        if (h1.getAge() < h2.getAge())
+    public int compare(Human human1, Human human2) {
+        if (human1.getAge() < human2.getAge())
             return -1;
-        else if (h1.getAge() == h2.getAge())
+        else if (human1.getAge() == human2.getAge())
             return 0;
-        else if (h1.getAge() > h2.getAge())
+        else if (human1.getAge() > human2.getAge())
             return 1;
         return 0;
     }

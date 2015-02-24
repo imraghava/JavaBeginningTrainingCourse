@@ -16,8 +16,7 @@ public class HumanRight implements Comparable<HumanRight> {
     }
 
     @Override
-    public int compareTo(HumanRight o) {
-        HumanRight human = (HumanRight) o;
+    public int compareTo(HumanRight human) {
         if (getAge() < human.getAge()) return -1;
         else if (getAge() == human.getAge()) return 0;
         else if (getAge() > human.getAge()) return 1;
