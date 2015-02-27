@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import java.io.ByteArrayInputStream;
 
@@ -12,7 +12,7 @@ public class ByteArrayInputStreamReset {
         byte b[] = tmp.getBytes();
         ByteArrayInputStream in = new ByteArrayInputStream(b);
 
-        for (int i=0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             int c;
             while ((c = in.read()) != -1) {
                 if (i == 0) {

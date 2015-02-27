@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.character;
 
 import java.io.CharArrayReader;
 import java.io.IOException;

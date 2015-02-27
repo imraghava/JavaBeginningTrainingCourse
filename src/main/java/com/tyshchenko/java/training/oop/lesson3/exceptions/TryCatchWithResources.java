@@ -1,5 +1,7 @@
 package com.tyshchenko.java.training.oop.lesson3.exceptions;
 
+import com.tyshchenko.java.training.oop.Constants;
+
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +12,7 @@ import java.io.InputStream;
  */
 public class TryCatchWithResources {
 
-    private static final String filePath = "src/main/resources/TryWithResourcesExplanation.txt";
+    private static final String filePath = Constants.FILE_PATH_LESSON_3 + "TryWithResourcesExplanation.txt";
 
     private static void printFile() throws IOException {
         InputStream input = null;

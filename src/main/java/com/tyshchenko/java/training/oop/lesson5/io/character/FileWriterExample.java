@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.character;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -15,20 +15,20 @@ public class FileWriterExample {
         char buffer[] = new char[source.length()];
         source.getChars(0, source.length(), buffer, 0);
 
-        try ( FileWriter f0 = new FileWriter(Constants.FILE_PATH + "/file1.txt");
-              FileWriter f1 = new FileWriter(Constants.FILE_PATH + "/file2.txt");
-              FileWriter f2 = new FileWriter(Constants.FILE_PATH + "/file3.txt") )
+        try ( FileWriter fw1 = new FileWriter(Constants.FILE_PATH_LESSON_5 + "/FileWriterExample1.txt");
+              FileWriter fw2 = new FileWriter(Constants.FILE_PATH_LESSON_5 + "/FileWriterExample2.txt");
+              FileWriter fw3 = new FileWriter(Constants.FILE_PATH_LESSON_5 + "/FileWriterExample3.txt") )
         {
             // write to first file
             for (int i = 0; i < buffer.length; i += 2) {
-                f0.write(buffer[i]);
+                fw1.write(buffer[i]);
             }
 
             // write to second file
-            f1.write(buffer);
+            fw2.write(buffer);
 
             // write to third file
-            f2.write(buffer, buffer.length-buffer.length/4, buffer.length/4);
+            fw3.write(buffer, buffer.length - buffer.length / 4, buffer.length / 4);
 
         } catch(IOException e) {
             System.out.println("An I/O Error Occured");

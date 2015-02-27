@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -15,9 +15,9 @@ public class FileOutputStreamExampleTryWithResources {
         byte buf[] = source.getBytes();
 
         // Use try-with-resources to close the files.
-        try (FileOutputStream f0 = new FileOutputStream(Constants.FILE_PATH + "/file1.txt");
-             FileOutputStream f1 = new FileOutputStream(Constants.FILE_PATH + "/file2.txt");
-             FileOutputStream f2 = new FileOutputStream(Constants.FILE_PATH + "/file3.txt") )
+        try (FileOutputStream f0 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt");
+             FileOutputStream f1 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt");
+             FileOutputStream f2 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt") )
         {
 
             // write to first file

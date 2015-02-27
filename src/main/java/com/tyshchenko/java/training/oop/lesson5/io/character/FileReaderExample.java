@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.character;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class FileReaderExample {
 
     public static void main(String[] args) {
-        try ( FileReader reader = new FileReader(Constants.FILE_PATH + "/FileReaderExample.java") )
+        try ( FileReader reader = new FileReader(Constants.FILE_PATH_LESSON_5 + "/FileReaderExample.java") )
         {
             int c;
 

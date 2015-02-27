@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.file;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -14,7 +14,7 @@ public class FileExample {
     }
 
     public static void main(String[] args) {
-        File file = new File(Constants.FILE_PATH + "/FileInputStreamExample.java");
+        File file = new File(Constants.FILE_PATH_LESSON_5 + "/FileInputStreamExample.txt");
 
         print("File Name: " + file.getName());
         print("Path: " + file.getPath());

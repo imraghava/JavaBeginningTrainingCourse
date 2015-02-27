@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.character;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -30,14 +30,14 @@ public class CharArrayWriterExample {
         System.out.println("Into array");
 
         char c[] = f.toCharArray();
-        for (int i=0; i<c.length; i++) {
+        for (int i = 0; i < c.length; i++) {
             System.out.print(c[i]);
         }
 
         System.out.println("\nTo a FileWriter()");
 
         // Use try-with-resources to manage the file stream.
-        try ( FileWriter f2 = new FileWriter(Constants.FILE_PATH + "/test.txt") )
+        try ( FileWriter f2 = new FileWriter(Constants.FILE_PATH_LESSON_5 + "/CharArrayWriterExample.txt") )
         {
             f.writeTo(f2);
         } catch(IOException e) {

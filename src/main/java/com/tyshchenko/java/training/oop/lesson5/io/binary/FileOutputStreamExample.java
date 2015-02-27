@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -18,9 +18,9 @@ public class FileOutputStreamExample {
         FileOutputStream fos2 = null;
 
         try {
-            fos0 = new FileOutputStream(Constants.FILE_PATH + "/file1.txt");
-            fos1 = new FileOutputStream(Constants.FILE_PATH + "/file2.txt");
-            fos2 = new FileOutputStream(Constants.FILE_PATH + "/file3.txt");
+            fos0 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt");
+            fos1 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt");
+            fos2 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/FileOutputStreamExample.txt");
 
             // write to first file
             for (int i=0; i < buf.length; i += 2)

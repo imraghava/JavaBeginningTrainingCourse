@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -10,7 +10,7 @@ import java.io.*;
 public class DataIOStreamExample {
 
     public static void main(String[] args) {
-        String path = Constants.FILE_PATH + "/Test.dat";
+        String path = Constants.FILE_PATH_LESSON_5 + "/DataIOStreamExample.dat";
 
         // First, write the data.
         try ( DataOutputStream dos =

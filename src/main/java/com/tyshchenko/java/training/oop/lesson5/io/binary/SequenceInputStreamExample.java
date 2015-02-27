@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -18,9 +18,9 @@ public class SequenceInputStreamExample {
         int c;
         Vector<String> files = new Vector<>();
 
-        files.addElement(Constants.FILE_PATH + "/file1.txt");
-        files.addElement(Constants.FILE_PATH + "/file2.txt");
-        files.addElement(Constants.FILE_PATH + "/file3.txt");
+        files.addElement(Constants.FILE_PATH_LESSON_5 + "/file1.txt");
+        files.addElement(Constants.FILE_PATH_LESSON_5 + "/file2.txt");
+        files.addElement(Constants.FILE_PATH_LESSON_5 + "/file3.txt");
         InputStreamEnumerator ise = new InputStreamEnumerator(files);
         InputStream input = new SequenceInputStream(ise);
 

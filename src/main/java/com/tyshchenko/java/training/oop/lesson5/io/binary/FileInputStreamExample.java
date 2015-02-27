@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -13,7 +13,7 @@ public class FileInputStreamExample {
     public static void main(String[] args) {
         int size;
 
-        try ( FileInputStream fis = new FileInputStream(Constants.FILE_PATH + "/FileInputStreamExample.java") ) {
+        try ( FileInputStream fis = new FileInputStream(Constants.FILE_PATH_LESSON_5 + "/FileInputStreamExample.txt") ) {
 
             System.out.println("Total Available Bytes: " +
                     (size = fis.available()));

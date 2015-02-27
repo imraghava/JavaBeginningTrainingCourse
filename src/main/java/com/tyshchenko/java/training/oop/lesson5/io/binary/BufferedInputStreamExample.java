@@ -1,27 +1,26 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
-import java.io.BufferedReader;
-import java.io.CharArrayReader;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 /**
  * @author Alexander Tyshchenko.
  */
-public class BufferedReaderExample {
+public class BufferedInputStreamExample {
 
     public static void main(String[] args) {
         String s = "This is a &copy; copyright symbol " +
                 "but this is &copy not.\n";
-        char buf[] = new char[s.length()];
-        s.getChars(0, s.length(), buf, 0);
+        byte buf[] = s.getBytes();
 
-        CharArrayReader in = new CharArrayReader(buf);
+        ByteArrayInputStream in = new ByteArrayInputStream(buf);
         int c;
         boolean marked = false;
 
-        try ( BufferedReader f = new BufferedReader(in) )
+        // Use try-with-resources to manage the file.
+        try ( BufferedInputStream f = new BufferedInputStream(in) )
         {
-
             while ((c = f.read()) != -1) {
                 switch(c) {
                     case '&':

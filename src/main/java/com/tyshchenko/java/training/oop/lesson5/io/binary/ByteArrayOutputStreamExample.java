@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson5.io;
+package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
 import com.tyshchenko.java.training.oop.Constants;
 
@@ -32,7 +32,7 @@ public class ByteArrayOutputStreamExample {
         System.out.println("\nTo an OutputStream()");
 
         // Use try-with-resources to manage the file stream.
-        try ( FileOutputStream f2 = new FileOutputStream(Constants.FILE_PATH + "/test.txt") )
+        try ( FileOutputStream f2 = new FileOutputStream(Constants.FILE_PATH_LESSON_5 + "/ByteArrayOutputStreamExample.txt") )
         {
             baos.writeTo(f2);
         } catch(IOException e) {
@@ -43,7 +43,7 @@ public class ByteArrayOutputStreamExample {
         System.out.println("Doing a reset");
         baos.reset();
 
-        for (int i=0; i<3; i++)
+        for (int i = 0; i < 3; i++)
             baos.write('X');
 
         System.out.println(baos.toString());

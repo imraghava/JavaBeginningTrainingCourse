@@ -1,4 +1,6 @@
-package com.tyshchenko.java.training.oop.lesson5;
+package com.tyshchenko.java.training.oop.lesson5.io.file;
+
+import com.tyshchenko.java.training.oop.Constants;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class FileSearcher {
     public static void main(String[] args) {
 
         try {
-            List<String> files = findFiles("/work/Documentation", ".pdf");
+            List<String> files = findFiles(Constants.FILE_PATH_LESSON_5, ".txt");
             for (String file : files) {
                 System.out.println(file);
             }
