@@ -1,6 +1,6 @@
 package com.tyshchenko.java.training.oop.lesson5.io.binary;
 
-import com.tyshchenko.java.training.oop.Constants;
+import com.tyshchenko.java.training.oop.util.Constants;
 
 import java.io.FileInputStream;
 import java.io.IOException;

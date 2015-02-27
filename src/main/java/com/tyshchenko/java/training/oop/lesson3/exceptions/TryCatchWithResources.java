@@ -1,6 +1,6 @@
 package com.tyshchenko.java.training.oop.lesson3.exceptions;
 
-import com.tyshchenko.java.training.oop.Constants;
+import com.tyshchenko.java.training.oop.util.Constants;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

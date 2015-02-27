@@ -1,6 +1,6 @@
 package com.tyshchenko.java.training.oop.lesson5.io.character;
 
-import com.tyshchenko.java.training.oop.Constants;
+import com.tyshchenko.java.training.oop.util.Constants;
 
 import java.io.CharArrayWriter;
 import java.io.FileWriter;
