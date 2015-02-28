@@ -1,54 +1,62 @@
 package com.tyshchenko.java.training.oop.lesson7.synchronize;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Alexander Tyshchenko.
  */
 public class SynchronizedExample2 {
 
     public static void main(String[] args) {
-        final SynchronizedCounter counter = new SynchronizedCounter();
+        Account account = new Account(1000_000);
 
-        List<Modifier> modifiers = new ArrayList<>();
-
-        for (int i = 0; i < 100; i++) {
-            Modifier modifier = new Modifier(counter);
-            modifiers.add(modifier);
-            modifier.start();
+        for (int i = 0; i < 1000; i++) {
+            Action action = new Action(account, 1000);
+            action.start();
         }
-        System.out.println(counter.value());
+
+        try {
+            Thread.sleep(5_000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(account.getAmount());
     }
 
 
-    private static final class Modifier extends Thread {
+    private static final class Action extends Thread {
 
-        private final SynchronizedCounter counter;
+        private final Account account;
+        private final int withdraw;
 
-        public Modifier(SynchronizedCounter counter) {
-            this.counter = counter;
+        public Action(Account account, int withdraw) {
+            this.account = account;
+            this.withdraw = withdraw;
         }
 
-        @Override
         public void run() {
-            counter.increment();
+            synchronized (account) {
+                int amount = account.getAmount();
+                if (amount >= withdraw) {
+                    account.setAmount(account.getAmount() - withdraw);
+                }
+            }
         }
     }
 
-    private static final class SynchronizedCounter {
-        private int count = 0;
+    private static final class Account {
 
-        public synchronized void increment() {
-            count++;
+        private int amount;
+
+        public Account(int amount) {
+            this.amount = amount;
         }
 
-        public synchronized void decrement() {
-            count--;
+        public int getAmount() {
+            return amount;
         }
 
-        public synchronized int value() {
-            return count;
+        public void setAmount(int amount) {
+            this.amount = amount;
         }
     }
 
