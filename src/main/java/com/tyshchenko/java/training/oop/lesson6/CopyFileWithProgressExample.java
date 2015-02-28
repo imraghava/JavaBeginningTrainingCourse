@@ -35,7 +35,7 @@ public class CopyFileWithProgressExample {
 
     public final static class Copy extends Thread {
 
-        private static final int BLOCK_SIZE = 1024;
+        private static final int BLOCK_SIZE = 24;
 
         private String src;
         private String destination;
@@ -76,6 +76,12 @@ public class CopyFileWithProgressExample {
 
                             if (progress != null)
                                 progress.update(counter / onePercent);
+
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     } while (r > 0);
                 } finally {
