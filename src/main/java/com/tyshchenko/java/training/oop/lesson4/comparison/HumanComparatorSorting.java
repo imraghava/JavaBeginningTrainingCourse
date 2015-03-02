@@ -20,6 +20,11 @@ public class HumanComparatorSorting {
         for (Human h : humans)
             System.out.println(h.getAge());
 
+//        Java 8
+//        Arrays.stream(humans)
+//                .sorted(new HumanComparator())
+//                .forEach((h) -> System.out.println(h.getAge()));
+
     }
 
 }

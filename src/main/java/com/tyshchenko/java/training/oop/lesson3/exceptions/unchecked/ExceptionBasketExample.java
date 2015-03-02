@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson3.exceptions;
+package com.tyshchenko.java.training.oop.lesson3.exceptions.unchecked;
 
 /**
  * @author Alexander Tyshchenko.

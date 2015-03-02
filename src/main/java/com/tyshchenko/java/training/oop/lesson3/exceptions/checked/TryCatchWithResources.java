@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson3.exceptions;
+package com.tyshchenko.java.training.oop.lesson3.exceptions.checked;
 
 import com.tyshchenko.java.training.oop.util.Constants;
 

@@ -1,5 +1,7 @@
 package com.tyshchenko.java.training.oop.lesson2.car;
 
+import java.util.Arrays;
+
 /**
  * @author Alexander Tyshchenko.
  */
@@ -17,8 +19,13 @@ public class CarExample {
 
         for (int s : speeds)
             bmw.start(s, 0.5);
+//        Java 8
+//        Arrays.stream(speeds).forEach((s) -> bmw.start(s, 0.5));
         for (int s : speeds)
             ferrari.start(s, 1);
+//        Java 8
+//        Arrays.stream(speeds).forEach((s) -> ferrari.start(s, 0.5));
+
 
         bmw.turnOff();
         ferrari.turnOff();

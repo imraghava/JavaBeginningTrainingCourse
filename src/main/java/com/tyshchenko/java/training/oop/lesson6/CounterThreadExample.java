@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class CounterThreadExample {
 
     public static void main(String[] args) {
+        int threadsCount = 10;
         CounterThread counter = new CounterThread("MyThreadCounter");
         counter.start();
 
@@ -21,16 +22,16 @@ public class CounterThreadExample {
             e.printStackTrace();
         }
 
-        List<CounterThread> threads = new ArrayList<>();
+        List<CounterThread> threads = new ArrayList<>(threadsCount);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < threadsCount; i++) {
             CounterThread thread = new CounterThread("MyThreadCounter" + i);
             threads.add(thread);
             thread.start();
         }
 
         // Java 8
-        IntStream.range(1, 10).forEach(
+        IntStream.range(1, threadsCount).forEach(
                 (i) ->  {
                     CounterThread thread = new CounterThread("MyThreadCounter" + i);
                     threads.add(thread);
@@ -39,7 +40,7 @@ public class CounterThreadExample {
         );
 
         // Java 8
-        IntStream.range(1, 10).forEach((i) -> threads.add(CounterThread.getInstance("MyThreadCounter" + i)));
+        IntStream.range(1, threadsCount).forEach((i) -> threads.add(CounterThread.getInstance("MyThreadCounter" + i)));
 
         try {
             Thread.sleep(5000);

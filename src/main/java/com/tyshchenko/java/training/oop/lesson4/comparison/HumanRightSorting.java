@@ -19,5 +19,10 @@ public class HumanRightSorting {
 
         for (HumanRight h : humans)
             System.out.println(h.getAge());
+
+//        Java 8
+//        Arrays.stream(humans)
+//                .sorted()
+//                .forEach((h) -> System.out.println(h.getAge()));
     }
 }
