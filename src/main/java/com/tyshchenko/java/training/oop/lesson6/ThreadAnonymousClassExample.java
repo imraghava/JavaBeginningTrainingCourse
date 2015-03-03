@@ -24,6 +24,9 @@ public class ThreadAnonymousClassExample {
                     System.out.println("a + b = " + (a + b));
                 }
             });
+
+//            Java 8
+//            Thread thread = new Thread(() -> System.out.println("a + b = " + (a + b)));
             thread.start();
         }
 

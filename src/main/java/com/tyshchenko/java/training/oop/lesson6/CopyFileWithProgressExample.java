@@ -11,7 +11,10 @@ import java.io.RandomAccessFile;
 public class CopyFileWithProgressExample {
 
     public static void main(String[] args) {
-        Copy c = new Copy(Constants.FILE_PATH_LESSON_6 + "/file1.txt", Constants.FILE_PATH_LESSON_6 + "/file2.txt", new Progress());
+        Copy c = new Copy(
+                Constants.FILE_PATH_LESSON_6 + "/file1.txt",
+                Constants.FILE_PATH_LESSON_6 + "/file2.txt",
+                new Progress());
         c.start();
     }
 
@@ -57,14 +60,13 @@ public class CopyFileWithProgressExample {
         }
 
         private void copyFile() throws IOException {
-            RandomAccessFile in = new RandomAccessFile(src, "r");
-            try {
+
+            try (RandomAccessFile in = new RandomAccessFile(src, "r")) {
                 final double onePercent = in.length() / 100.0; // !!!
 
                 counter = 0;
 
-                RandomAccessFile out = new RandomAccessFile(destination, "rw");
-                try {
+                try (RandomAccessFile out = new RandomAccessFile(destination, "rw");) {
                     byte[] buf = new byte[BLOCK_SIZE];
                     int r;
 
@@ -84,11 +86,7 @@ public class CopyFileWithProgressExample {
                             }
                         }
                     } while (r > 0);
-                } finally {
-                    out.close();
                 }
-            } finally {
-                in.close();
             }
         }
     }
