@@ -22,6 +22,9 @@ public class RecursionExample {
 
         for (String s : list)
             System.out.println(s);
+
+//        Java 8 static method reference
+//        list.forEach(System.out::println);
     }
 
 
