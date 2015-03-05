@@ -1,5 +1,9 @@
 package com.tyshchenko.java.training.oop.lesson8;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static com.tyshchenko.java.training.oop.lesson8.Point2DHashcodeExample.Point2D;
 /**
  * @author Alexander Tyshchenko.
@@ -7,6 +11,7 @@ import static com.tyshchenko.java.training.oop.lesson8.Point2DHashcodeExample.Po
 public class EqualsExample {
 
     public static void main(String[] args) {
+
         String str1 = "string1";
         String str2 = "string2";
 

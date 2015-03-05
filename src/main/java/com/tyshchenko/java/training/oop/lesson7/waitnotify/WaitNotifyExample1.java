@@ -78,7 +78,9 @@ public class WaitNotifyExample1 {
 
             synchronized (data) {
                 try {
-                    data.wait();
+                    if (data.getData() == null) {
+                        data.wait();
+                    }
                 } catch (InterruptedException e) {
                     return;
                 }

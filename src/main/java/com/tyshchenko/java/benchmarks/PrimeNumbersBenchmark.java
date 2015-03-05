@@ -48,6 +48,8 @@ public class PrimeNumbersBenchmark {
         Options opt = new OptionsBuilder()
                 .include(PrimeNumbersBenchmark.class.getSimpleName())
                 .forks(1)
+                .warmupIterations(3)
+                .measurementIterations(3)
                 .build();
 
         new Runner(opt).run();

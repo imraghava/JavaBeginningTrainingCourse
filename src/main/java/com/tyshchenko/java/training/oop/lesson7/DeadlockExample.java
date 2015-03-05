@@ -8,12 +8,9 @@ public class DeadlockExample {
     public static void main(String[] args) {
         final Friend mark = new Friend("Mark");
         final Friend tomas = new Friend("Tomas");
-        new Thread(
-                () -> mark.bow(tomas)
-        , "Thread_1").start();
-        new Thread(
-                () -> tomas.bow(mark)
-        , "Thread_2").start();
+
+        new Thread(() -> mark.bow(tomas), "Thread_1").start();
+        new Thread(() -> tomas.bow(mark), "Thread_2").start();
     }
 
     private static final class Friend {
