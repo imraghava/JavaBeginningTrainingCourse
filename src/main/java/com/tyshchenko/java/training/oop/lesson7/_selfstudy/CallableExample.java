@@ -10,6 +10,8 @@ import java.util.concurrent.Future;
 
 /**
  * @author Alexander Tyshchenko.
+ *
+ * https://blogs.oracle.com/CoreJavaTechTips/entry/get_netbeans_6
  */
 public class CallableExample {
 
@@ -43,7 +45,5 @@ public class CallableExample {
             return Integer.valueOf(word.length());
         }
     }
-
-
 
 }
