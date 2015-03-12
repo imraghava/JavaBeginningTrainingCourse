@@ -3,7 +3,7 @@ package com.tyshchenko.java.training.oop.lesson9.generics;
 /**
  * @author Alexander Tyshchenko.
  */
-public class TwoTupleGenericExample {
+public class TupleGenericExample {
 
     public static void main(String[] args) {
         TwoTuple<String, Integer>                       tuple1 = getJobResult1();
