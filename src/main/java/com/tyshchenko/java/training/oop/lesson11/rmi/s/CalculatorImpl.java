@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson11.rmi;
+package com.tyshchenko.java.training.oop.lesson11.rmi.s;
 
 import com.tyshchenko.java.training.oop.lesson11.rmi.common.Calculator;
 
