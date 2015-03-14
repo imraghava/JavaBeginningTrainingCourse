@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson11.rmi.s;
+package com.tyshchenko.java.training.oop.lesson11.rmi.server;
 
 import com.tyshchenko.java.training.oop.lesson11.rmi.common.RMIConstants;
 
