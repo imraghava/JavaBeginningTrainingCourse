@@ -140,7 +140,7 @@ public class MonitorExample {
                 {
                     String path = it.next();
 
-                    if ( ! m1.containsKey(path))
+                    if (!m1.containsKey(path))
                         doFileAdded(path);
                 }
             }
@@ -151,8 +151,10 @@ public class MonitorExample {
                     File[] list = file.listFiles();
 
                     output.clear();
-                    for (File f : list) {
-                        output.put(f.getCanonicalPath(), new Long(f.lastModified()));
+                    if (list != null) {
+                        for (File f : list) {
+                            output.put(f.getCanonicalPath(), new Long(f.lastModified()));
+                        }
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
