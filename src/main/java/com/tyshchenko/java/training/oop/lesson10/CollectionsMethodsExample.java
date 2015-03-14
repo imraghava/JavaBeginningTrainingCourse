@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson9.collections;
+package com.tyshchenko.java.training.oop.lesson10;
 
 import java.util.*;
 
@@ -11,11 +11,12 @@ public class CollectionsMethodsExample {
         CollectionsMethodsExample object = new CollectionsMethodsExample();
     }
 
-    private Map<Integer, String> map = new HashMap<>();
-    private NavigableMap<Integer, String> navigableMap = new TreeMap<>();
-    private SortedMap<Integer, String> sortedMap = new TreeMap<>();
-    private List<String> list = new ArrayList<>();
-    private Set<String> set = new HashSet<>();
+    private Map<Integer, String>            map =           new HashMap<>();
+    private NavigableMap<Integer, String>   navigableMap =  new TreeMap<>();
+    private SortedMap<Integer, String>      sortedMap =     new TreeMap<>();
+    private List<String>                    list =          new ArrayList<>();
+    private Set<String>                     set =           new HashSet<>();
+    private SortedSet<String>               sortedSet =     new TreeSet<>();
 
     public List<String> getList() {
         return Collections.unmodifiableList(list);
@@ -39,5 +40,9 @@ public class CollectionsMethodsExample {
 
     public SortedMap<Integer, String> getSortedMap() {
         return Collections.unmodifiableSortedMap(sortedMap);
+    }
+
+    public SortedSet<String> getSortedSet() {
+        return Collections.unmodifiableSortedSet(sortedSet);
     }
 }

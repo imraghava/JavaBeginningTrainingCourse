@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Alexander Tyshchenko.
  */
-public class ArrayListExample {
+public class ArrayListExample1 {
 
     public static void main(String[] args) {
         List<String> stringList = new ArrayList<>();
@@ -30,6 +30,9 @@ public class ArrayListExample {
 
         System.out.println(stringList.contains("4"));
         System.out.println(stringList.contains("10"));
+
+        System.out.println(stringList.containsAll(Arrays.asList("1", "2")));
+        System.out.println(stringList.containsAll(Arrays.asList("1", "2", "100")));
 
     }
 
