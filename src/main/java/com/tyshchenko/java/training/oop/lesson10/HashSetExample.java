@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson9.collections;
+package com.tyshchenko.java.training.oop.lesson10;
 
 import java.util.HashSet;
 import java.util.Set;
