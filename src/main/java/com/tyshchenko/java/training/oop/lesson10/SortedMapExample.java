@@ -9,7 +9,7 @@ public class SortedMapExample {
 
     public static void main(String[] args) {
 //        SortedMap<Account, List<Order>> map = new TreeMap<>();
-        SortedMap<Account, List<Order>> map = new TreeMap<>(new AccountDescedingComparator());
+        SortedMap<Account, List<Order>> map = new TreeMap<>(new AccountDescendingComparator());
 
         Account account1 = new Account(1);
         Account account2 = new Account(2);
@@ -59,7 +59,7 @@ public class SortedMapExample {
 
     private static final class Order {}
 
-    private static final class AccountDescedingComparator implements Comparator<Account> {
+    private static final class AccountDescendingComparator implements Comparator<Account> {
 
         @Override
         public int compare(Account o1, Account o2) {

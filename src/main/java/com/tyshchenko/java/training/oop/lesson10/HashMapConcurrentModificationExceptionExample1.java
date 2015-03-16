@@ -18,10 +18,10 @@ public class HashMapConcurrentModificationExceptionExample1 {
 
           /* Remove a value of the map, while iterating over it.
            * The following code throws a java.util.ConcurrentModificationException. */
-        for(String key: map.keySet()) {
-            if(map.get(key) == 1)
-                map.remove(key);
-        }
+        map.keySet().forEach( (k) -> {
+            if(map.get(k) == 1)
+                map.remove(k);
+        });
         System.out.println("Successfully removed a pair!");
     }
 

@@ -9,12 +9,11 @@ import java.net.URL;
 /**
  * @author Alexander Tyshchenko.
  */
-public class SocketExample2 {
+public class HttpURLConnectionExample {
 
     public static void main(String[] args) throws IOException {
         URL url = new URL("http://google.com.ua");
-        HttpURLConnection http = (HttpURLConnection)
-        url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(http.getInputStream())))
         {
             char[] buf = new char[1000];

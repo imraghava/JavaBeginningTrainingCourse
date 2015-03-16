@@ -3,6 +3,7 @@ package com.tyshchenko.java.training.oop.lesson10;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
@@ -14,6 +15,7 @@ public class HashMapConcurrentModificationExceptionExample2 {
 
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
+//        Map<Integer, String> map = new ConcurrentHashMap<>();
 
         ExecutorService executor = Executors.newFixedThreadPool(100);
         IntStream.range(0, 100).forEach((i) -> executor.submit(new Worker(map)));

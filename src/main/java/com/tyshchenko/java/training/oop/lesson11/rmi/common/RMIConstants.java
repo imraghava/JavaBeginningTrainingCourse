@@ -5,7 +5,7 @@ package com.tyshchenko.java.training.oop.lesson11.rmi.common;
  */
 public interface RMIConstants {
 
-    int RMI_PORT = 1199;
-    String RMI_SERVICE = "CALCULATOR_SERVICE";
+    int    RMI_PORT     = 1199;
+    String RMI_SERVICE  = "CALCULATOR_SERVICE";
 
 }
