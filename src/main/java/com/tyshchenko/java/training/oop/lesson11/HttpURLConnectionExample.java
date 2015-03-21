@@ -24,6 +24,7 @@ public class HttpURLConnectionExample {
                     sb.append(new String(buf, 0, r));
             }
             while (r > 0);
+            http.getHeaderField("Date");
             System.out.println(sb.toString());
         } finally {
             http.disconnect();

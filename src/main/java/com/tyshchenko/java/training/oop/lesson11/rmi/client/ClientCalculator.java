@@ -16,7 +16,7 @@ import java.rmi.registry.Registry;
 public class ClientCalculator {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException {
-        Registry registry = LocateRegistry.getRegistry(RMIConstants.RMI_PORT);
+        Registry registry = LocateRegistry.getRegistry("",RMIConstants.RMI_PORT);
         Calculator calculator = (Calculator) registry.lookup(RMIConstants.RMI_SERVICE);
         System.out.println(calculator.add(1, 2));
 

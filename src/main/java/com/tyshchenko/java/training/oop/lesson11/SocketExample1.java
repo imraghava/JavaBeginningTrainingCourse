@@ -12,12 +12,12 @@ public class SocketExample1 {
 
     public static void main(String[] args) throws IOException {
 
-        try(Socket socket = new Socket("google.com.ua", 80);
+        try(Socket socket = new Socket("www.google.com.ua", 80);
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             InputStream inputStream = socket.getInputStream())
         {
             pw.println("GET / HTTP/1.1");
-            pw.println("Host: google.com.ua\n");
+            pw.println("Host: www.google.com.ua\n");
             pw.flush();
 
             byte[] buf = new byte[1000];
