@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.server;
+package com.tyshchenko.java.training.oop.lesson12.chat.server;
 
 import javax.swing.*;
 import java.awt.*;

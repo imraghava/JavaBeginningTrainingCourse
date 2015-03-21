@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.server;
+package com.tyshchenko.java.training.oop.lesson12.chat.server;
 
 import javax.swing.*;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.io.File;
  */
 public class ServerChatForm extends JFrame {
 
-    private ChatSocketServer server;
+    private SocketServerThread server;
     private String filePath = "src/main/resources/oop/lesson11/database.xml";
     private JFileChooser fileChooser = new JFileChooser();
 
@@ -39,7 +39,7 @@ public class ServerChatForm extends JFrame {
             });
         buttonStartServer.addActionListener(
             e -> {
-                server = new ChatSocketServer(this);
+                server = new SocketServerThread(this);
                 buttonStartServer.setEnabled(false);
                 buttonBrowseDatabaseFile.setEnabled(false);
             });
@@ -54,14 +54,14 @@ public class ServerChatForm extends JFrame {
         if (server != null) {
             server.stop();
         }
-        server = new ChatSocketServer(this, port);
+        server = new SocketServerThread(this, port);
     }
 
     public String getFilePath() {
         return filePath;
     }
 
-    public ChatSocketServer getServer() {
+    public SocketServerThread getServer() {
         return server;
     }
 

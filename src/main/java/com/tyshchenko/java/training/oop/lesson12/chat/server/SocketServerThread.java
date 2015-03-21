@@ -1,7 +1,6 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.server;
+package com.tyshchenko.java.training.oop.lesson12.chat.server;
 
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message;
-import com.tyshchenko.java.training.oop.lesson4.interfaces.Showable;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -11,9 +10,9 @@ import java.net.Socket;
 /**
  * @author Alexander Tyshchenko.
  */
-public class ChatSocketServer implements Runnable {
+public class SocketServerThread implements Runnable {
 
-    private ServerThread clients[];
+    private ClientThread clients[];
     private ServerSocket socket = null;
     private Thread thread = null;
     private int clientCount = 0;
@@ -21,9 +20,9 @@ public class ChatSocketServer implements Runnable {
     private ServerChatForm serverChatForm;
     private Database db;
 
-    public ChatSocketServer(ServerChatForm serverChatForm) {
+    public SocketServerThread(ServerChatForm serverChatForm) {
 
-        clients = new ServerThread[50];
+        clients = new ClientThread[50];
         this.serverChatForm = serverChatForm;
         db = new Database(serverChatForm.getFilePath());
 
@@ -38,9 +37,9 @@ public class ChatSocketServer implements Runnable {
         }
     }
 
-    public ChatSocketServer(ServerChatForm serverChatForm, int port) {
+    public SocketServerThread(ServerChatForm serverChatForm, int port) {
 
-        clients = new ServerThread[50];
+        clients = new ClientThread[50];
         this.serverChatForm = serverChatForm;
         this.port = port;
         db = new Database(serverChatForm.getFilePath());
@@ -83,7 +82,7 @@ public class ChatSocketServer implements Runnable {
 
     private int findClient(int ID) {
         for (int i = 0; i < clientCount; i++) {
-            if (clients[i].getID() == ID) {
+            if (clients[i].getUserId() == ID) {
                 return i;
             }
         }
@@ -105,7 +104,7 @@ public class ChatSocketServer implements Runnable {
                         announce(Message.Type.NEW_USER, "SERVER", msg.sender);
                         sendUserList(msg.sender);
 //                    } else {
-//                        clients[findClient(ID)].send(new Message("login", "SERVER", "FALSE", msg.sender));
+//                        clients[findClient(userId)].send(new Message("login", "SERVER", "FALSE", msg.sender));
 //                    }
                     } else {
                         clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "FALSE", msg.sender));
@@ -127,16 +126,16 @@ public class ChatSocketServer implements Runnable {
                 }
                 case SIGN_UP: {
                     if (findUserThread(msg.sender) == null) {
-                        if (!db.userExists(msg.sender)) {
+//                        if (!db.userExists(msg.sender)) {
                             db.addUser(msg.sender, msg.content);
                             clients[findClient(ID)].username = msg.sender;
                             clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "TRUE", msg.sender));
                             clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "TRUE", msg.sender));
                             announce(Message.Type.NEW_USER, "SERVER", msg.sender);
                             sendUserList(msg.sender);
-                        } else {
-                            clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", msg.sender));
-                        }
+//                        } else {
+//                            clients[findClient(userId)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", msg.sender));
+//                        }
                     } else {
                         clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", msg.sender));
                     }
@@ -176,20 +175,20 @@ public class ChatSocketServer implements Runnable {
         }
     }
 
-    public ServerThread findUserThread(String usr) {
+    public ClientThread findUserThread(String userName) {
         for (int i = 0; i < clientCount; i++) {
-            if (clients[i].username.equals(usr)) {
+            if (clients[i].username.equals(userName)) {
                 return clients[i];
             }
         }
         return null;
     }
 
-    public synchronized void remove(int ID) {
-        int pos = findClient(ID);
+    public synchronized void remove(int userId) {
+        int pos = findClient(userId);
         if (pos >= 0) {
-            ServerThread toTerminate = clients[pos];
-            serverChatForm.getTextArea().append("\nRemoving client thread " + ID + " at " + pos);
+            ClientThread toTerminate = clients[pos];
+            serverChatForm.getTextArea().append("\nRemoving client thread " + userId + " at " + pos);
             if (pos < clientCount - 1) {
                 for (int i = pos + 1; i < clientCount; i++) {
                     clients[i - 1] = clients[i];
@@ -207,7 +206,7 @@ public class ChatSocketServer implements Runnable {
     private void addThread(Socket socket) {
         if (clientCount < clients.length) {
             serverChatForm.getTextArea().append("\nClient accepted: " + socket);
-            clients[clientCount] = new ServerThread(this, socket);
+            clients[clientCount] = new ClientThread(this, socket);
             try {
                 clients[clientCount].open();
                 clients[clientCount].start();

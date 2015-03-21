@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.client;
+package com.tyshchenko.java.training.oop.lesson12.chat.client;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

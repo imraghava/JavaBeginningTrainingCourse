@@ -1,7 +1,7 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.client;
+package com.tyshchenko.java.training.oop.lesson12.chat.client;
 
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message;
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message.Type;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message.Type;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -44,34 +44,35 @@ public class SocketClient implements Runnable {
         boolean keepRunning = true;
         while (keepRunning) {
             try {
-                Message msg = (Message) socketInputStream.readObject();
-                System.out.println("Incoming : " + msg.toString());
+                Message message = (Message) socketInputStream.readObject();
+                System.out.println("Incoming : " + message.toString());
 
-                switch (msg.type) {
+                switch (message.type) {
                     case MESSAGE: {
-                        if (msg.recipient.equals(clientChatForm.getUsername())) {
-                            clientChatForm.getClientArea().append("[" + msg.sender + " > Me] : " + msg.content + "\n");
+                        if (message.recipient.equals(clientChatForm.getUsername())) {
+                            clientChatForm.getClientArea().append("[" + message.sender + " > Me] : " + message.content + "\n");
                         } else {
-                            clientChatForm.getClientArea().append("[" + msg.sender + " > " + msg.recipient + "] : " + msg.content + "\n");
+                            clientChatForm.getClientArea().append("[" + message.sender + " > " + message.recipient + "] : " + message.content + "\n");
                         }
 
-                        if (!msg.content.equals(".bye") && !msg.sender.equals(clientChatForm.getUsername())) {
+                        if (!message.content.equals(".bye") && !message.sender.equals(clientChatForm.getUsername())) {
                             String msgTime = (new Date()).toString();
 
                             try {
-                                history.addMessage(msg, msgTime);
+                                history.addMessage(message, msgTime);
                                 DefaultTableModel table = (DefaultTableModel) clientChatForm.getHistoryFrame().getHistoryTable().getModel();
-                                table.addRow(new Object[]{msg.sender, msg.content, "Me", msgTime});
+                                table.addRow(new Object[]{message.sender, message.content, "Me", msgTime});
                             } catch (Exception ex) {
                             }
                         }
                         break;
                     }
                     case LOGIN: {
-                        if (msg.content.equals("TRUE")) {
+                        if (message.content.equals("TRUE")) {
                             clientChatForm.getButtonLogin().setEnabled(false);
                             clientChatForm.getButtonSignUp().setEnabled(true);
                             clientChatForm.getButtonSendMessage().setEnabled(true);
+                            clientChatForm.getButtonBrowseFile().setEnabled(true);
                             clientChatForm.getTextFieldMessage().setEnabled(true);
                             clientChatForm.getClientArea().append("[SERVER > Me] : Login Successful\n");
                             clientChatForm.getTextFieldUsername().setEnabled(false);
@@ -84,7 +85,7 @@ public class SocketClient implements Runnable {
                     case PING: {
                         clientChatForm.getButtonConnect().setEnabled(false);
                         clientChatForm.getButtonLogin().setEnabled(true);
-                        clientChatForm.getButtonSignUp().setEnabled(true);
+                        clientChatForm.getButtonSignUp().setEnabled(false);
                         clientChatForm.getTextFieldUsername().setEnabled(true);
                         clientChatForm.getTextFieldPassword().setEnabled(true);
                         clientChatForm.getTextFieldHostAddress().setEditable(false);
@@ -94,22 +95,22 @@ public class SocketClient implements Runnable {
                         break;
                     }
                     case NEW_USER: {
-                        if (!msg.content.equals(clientChatForm.getUsername())) {
+                        if (!message.content.equals(clientChatForm.getUsername())) {
                             boolean exists = false;
                             for (int i = 0; i < clientChatForm.getUserListModel().getSize(); i++) {
-                                if (clientChatForm.getUserListModel().getElementAt(i).equals(msg.content)) {
+                                if (clientChatForm.getUserListModel().getElementAt(i).equals(message.content)) {
                                     exists = true;
                                     break;
                                 }
                             }
                             if (!exists) {
-                                clientChatForm.getUserListModel().addElement(msg.content);
+                                clientChatForm.getUserListModel().addElement(message.content);
                             }
                         }
                         break;
                     }
                     case SIGN_UP: {
-                        if (msg.content.equals("TRUE")) {
+                        if (message.content.equals("TRUE")) {
                             clientChatForm.getButtonLogin().setEnabled(false);
                             clientChatForm.getButtonSignUp().setEnabled(false);
                             clientChatForm.getButtonSendMessage().setEnabled(true);
@@ -121,8 +122,8 @@ public class SocketClient implements Runnable {
                         break;
                     }
                     case SIGN_OUT: {
-                        if (msg.content.equals(clientChatForm.getUsername())) {
-                            clientChatForm.getClientArea().append("[" + msg.sender + " > Me] : Bye\n");
+                        if (message.content.equals(clientChatForm.getUsername())) {
+                            clientChatForm.getClientArea().append("[" + message.sender + " > Me] : Bye\n");
                             clientChatForm.getButtonConnect().setEnabled(true);
                             clientChatForm.getButtonSendMessage().setEnabled(false);
                             clientChatForm.getTextFieldHostAddress().setEditable(true);
@@ -134,16 +135,16 @@ public class SocketClient implements Runnable {
 
                             clientChatForm.getClientThread().interrupt();
                         } else {
-                            clientChatForm.getUserListModel().removeElement(msg.content);
-                            clientChatForm.getClientArea().append("[" + msg.sender + " > All] : " + msg.content + " has signed out\n");
+                            clientChatForm.getUserListModel().removeElement(message.content);
+                            clientChatForm.getClientArea().append("[" + message.sender + " > All] : " + message.content + " has signed out\n");
                         }
                         break;
                     }
                     case UPLOAD_REQUEST: {
-                        if (JOptionPane.showConfirmDialog(clientChatForm, ("Accept '" + msg.content + "' from " + msg.sender + " ?")) == 0) {
+                        if (JOptionPane.showConfirmDialog(clientChatForm, ("Accept '" + message.content + "' from " + message.sender + " ?")) == 0) {
 
                             JFileChooser jf = new JFileChooser();
-                            jf.setSelectedFile(new File(msg.content));
+                            jf.setSelectedFile(new File(message.content));
                             int returnVal = jf.showSaveDialog(clientChatForm);
 
                             String saveTo = jf.getSelectedFile().getPath();
@@ -152,19 +153,19 @@ public class SocketClient implements Runnable {
                                 Thread t = new Thread(dwn);
                                 t.start();
                                 //send(new Message("upload_res", (""+InetAddress.getLocalHost().getHostAddress()), (""+dwn.port), msg.sender));
-                                send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), ("" + dwn.getPort()), msg.sender));
+                                send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), ("" + dwn.getPort()), message.sender));
                             } else {
-                                send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), "NO", msg.sender));
+                                send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), "NO", message.sender));
                             }
                         } else {
-                            send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), "NO", msg.sender));
+                            send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), "NO", message.sender));
                         }
                         break;
                     }
                     case UPLOAD_RESPONSE: {
-                        if (!msg.content.equals("NO")) {
-                            int port = Integer.parseInt(msg.content);
-                            String addr = msg.sender;
+                        if (!message.content.equals("NO")) {
+                            int port = Integer.parseInt(message.content);
+                            String addr = message.sender;
 
 //                        clientChatForm.button3.setEnabled(false);
                             clientChatForm.getButtonSendFile().setEnabled(false);
@@ -172,7 +173,7 @@ public class SocketClient implements Runnable {
                             Thread t = new Thread(upl);
                             t.start();
                         } else {
-                            clientChatForm.getClientArea().append("[SERVER > Me] : " + msg.sender + " rejected file request\n");
+                            clientChatForm.getClientArea().append("[SERVER > Me] : " + message.sender + " rejected file request\n");
                         }
                         break;
                     }
@@ -208,7 +209,7 @@ public class SocketClient implements Runnable {
             socketOutputStream.flush();
             System.out.println("Outgoing : " + msg.toString());
 
-            if (msg.type.equals("message") && !msg.content.equals(".bye")) {
+            if (msg.type == Type.MESSAGE && !msg.content.equals(".bye")) {
                 String msgTime = (new Date()).toString();
                 try {
                     history.addMessage(msg, msgTime);

@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.client;
+package com.tyshchenko.java.training.oop.lesson12.chat.client;
 
 import java.io.*;
 import javax.xml.parsers.DocumentBuilder;
@@ -8,7 +8,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message;
 import org.w3c.dom.*;
 
 import javax.swing.table.DefaultTableModel;

@@ -1,6 +1,6 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.server;
+package com.tyshchenko.java.training.oop.lesson12.chat.server;
 
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,46 +10,46 @@ import java.net.Socket;
 /**
  * @author Alexander Tyshchenko.
  */
-public class ServerThread extends Thread {
+public class ClientThread extends Thread {
 
-    public ChatSocketServer server = null;
+    public SocketServerThread server = null;
     public Socket socket = null;
-    public int ID = -1;
+    public int userId = -1;
     public String username = "";
     public ObjectInputStream socketInputStream = null;
     public ObjectOutputStream socketOutputStream = null;
     public ServerChatForm serverChatForm;
 
-    public ServerThread(ChatSocketServer server, Socket socket) {
+    public ClientThread(SocketServerThread server, Socket socket) {
         this.server = server;
         this.socket = socket;
-        ID = this.socket.getPort();
+        userId = this.socket.getPort();
         serverChatForm = server.getServerChatForm();
     }
 
-    public void send(Message msg) {
+    public void send(Message message) {
         try {
-            socketOutputStream.writeObject(msg);
+            socketOutputStream.writeObject(message);
             socketOutputStream.flush();
         } catch (IOException ex) {
             System.out.println("Exception [SocketClient : send(...)]");
         }
     }
 
-    public int getID() {
-        return ID;
+    public int getUserId() {
+        return userId;
     }
 
     @Override
     public void run() {
-        serverChatForm.getTextArea().append("\nServer Thread " + ID + " running.");
+        serverChatForm.getTextArea().append("\nServer Thread " + userId + " running.");
         while (true) {
             try {
                 Message msg = (Message) socketInputStream.readObject();
-                server.handle(ID, msg);
+                server.handle(userId, msg);
             } catch (Exception ioe) {
-                System.out.println(ID + " ERROR reading: " + ioe.getMessage());
-                server.remove(ID);
+                System.out.println(userId + " ERROR reading: " + ioe.getMessage());
+                server.remove(userId);
                 break;
             }
         }

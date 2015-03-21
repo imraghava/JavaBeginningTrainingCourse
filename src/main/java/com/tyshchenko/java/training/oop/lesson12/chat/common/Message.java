@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.common;
+package com.tyshchenko.java.training.oop.lesson12.chat.common;
 
 import java.io.Serializable;
 

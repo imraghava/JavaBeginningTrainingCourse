@@ -1,10 +1,8 @@
-package com.tyshchenko.java.training.oop.lesson12.swingchat.client;
+package com.tyshchenko.java.training.oop.lesson12.chat.client;
 
-import com.tyshchenko.java.training.oop.lesson12.swingchat.common.Message;
+import com.tyshchenko.java.training.oop.lesson12.chat.common.Message;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
@@ -19,7 +17,7 @@ public class ClientChatForm extends JFrame {
     private String password;
     private Thread clientThread;
     private File file;
-    private String historyFile = "src/main/resources/oop/lesson11/history.xml";
+    private String historyFile = "src/main/resources/oop/lesson12/history.xml";
     private HistoryForm historyFrame;
     private History hist;
 
@@ -54,6 +52,7 @@ public class ClientChatForm extends JFrame {
 
     public ClientChatForm(String title) {
         super(title);
+        usersList.setSelectedIndex(0);
         buttonConnect.addActionListener(e -> {
             serverAddress = textFieldHostAddress.getText();
             port = Integer.parseInt(textFieldHostPort.getText());
@@ -79,9 +78,9 @@ public class ClientChatForm extends JFrame {
         });
         buttonSignUp.addActionListener(e -> {
             username = textFieldUsername.getText();
-            password = new String(textFieldPassword.getPassword());
+//            password = new String(textFieldPassword.getPassword());
 
-            if (!username.isEmpty() && !password.isEmpty()) {
+            if (!username.isEmpty() /*&& !password.isEmpty()*/) {
                 client.send(new Message(Message.Type.SIGN_UP, username, password, "SERVER"));
             }
         });
@@ -99,11 +98,11 @@ public class ClientChatForm extends JFrame {
             historyFrame.setVisible(true);
         });
         buttonBrowseHistory.addActionListener(e -> {
-            JFileChooser jf = new JFileChooser();
-            jf.showDialog(this, "Select File");
+            JFileChooser chooser = new JFileChooser();
+            chooser.showDialog(this, "Select File");
 
-            if(!jf.getSelectedFile().getPath().isEmpty()){
-                historyFile = jf.getSelectedFile().getPath();
+            if (chooser.getSelectedFile() != null && !chooser.getSelectedFile().getPath().isEmpty()) {
+                historyFile = chooser.getSelectedFile().getPath();
 //                if(this.isWin32()){
 //                    historyFile = historyFile.replace("/", "\\");
 //                }
@@ -112,12 +111,45 @@ public class ClientChatForm extends JFrame {
                 buttonBrowseHistory.setEnabled(false);
                 buttonShowHistory.setEnabled(true);
                 hist = new History(historyFile);
-
-                historyFrame = new HistoryForm("History", hist);
-                historyFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                historyFrame.setVisible(false);
             }
         });
+        buttonBrowseFile.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showDialog(this, "Select File");
+            file = fileChooser.getSelectedFile();
+
+            if (file != null) {
+                if (!file.getName().isEmpty()) {
+                    buttonSendFile.setEnabled(true);
+                    String str;
+
+                    if (textFieldFilePath.getText().length() > 30) {
+                        String t = file.getPath();
+                        str = t.substring(0, 20) + " [...] " + t.substring(t.length() - 20, t.length());
+                    } else {
+                        str = file.getPath();
+                    }
+                    textFieldFilePath.setText(str);
+                }
+            }
+        });
+        buttonSendFile.addActionListener(e -> {
+            long size = file.length();
+            if (size < 120 * 1024 * 1024) {
+                client.send(new Message(Message.Type.UPLOAD_REQUEST, username, file.getName(), usersList.getSelectedValue().toString()));
+            } else {
+                clientArea.append("[Application > Me] : File is size too large\n");
+            }
+        });
+
+        hist = new History(historyFile);
+        historyFrame = new HistoryForm("History", hist);
+        historyFrame.setContentPane(historyFrame.getContentPanel());
+        historyFrame.getHistoryTable().setModel(historyFrame.getHistoryModel());
+        historyFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        historyFrame.pack();
+        historyFrame.getHist().fillTable(historyFrame);
+        historyFrame.setVisible(false);
     }
 
     public JButton getButtonBrowseFile() {
@@ -136,10 +168,6 @@ public class ClientChatForm extends JFrame {
         return buttonLogin;
     }
 
-    public JPanel getBottomPanel() {
-        return bottomPanel;
-    }
-
     public JButton getButtonSendFile() {
         return buttonSendFile;
     }
@@ -148,16 +176,8 @@ public class ClientChatForm extends JFrame {
         return buttonSendMessage;
     }
 
-    public JButton getButtonShowHistory() {
-        return buttonShowHistory;
-    }
-
     public JButton getButtonSignUp() {
         return buttonSignUp;
-    }
-
-    public JSplitPane getCenterPanel() {
-        return centerPanel;
     }
 
     public SocketClient getClient() {
@@ -180,44 +200,8 @@ public class ClientChatForm extends JFrame {
         return hist;
     }
 
-    public String getHistoryFile() {
-        return historyFile;
-    }
-
     public HistoryForm getHistoryFrame() {
         return historyFrame;
-    }
-
-    public JLabel getlFilePath() {
-        return lFilePath;
-    }
-
-    public JLabel getlHistoryPath() {
-        return lHistoryPath;
-    }
-
-    public JLabel getlHostAddress() {
-        return lHostAddress;
-    }
-
-    public JLabel getlHostPort() {
-        return lHostPort;
-    }
-
-    public JLabel getlMessage() {
-        return lMessage;
-    }
-
-    public JLabel getlPassword() {
-        return lPassword;
-    }
-
-    public JLabel getlUserName() {
-        return lUserName;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public JPasswordField getTextFieldPassword() {
@@ -240,14 +224,6 @@ public class ClientChatForm extends JFrame {
         return textFieldMessage;
     }
 
-    public JTextField getTextFieldFilePath() {
-        return textFieldFilePath;
-    }
-
-    public JTextField getTextFieldHistoryFilePath() {
-        return textFieldHistoryFilePath;
-    }
-
     public JTextField getTextFieldHostAddress() {
         return textFieldHostAddress;
     }
@@ -260,19 +236,11 @@ public class ClientChatForm extends JFrame {
         return textFieldUsername;
     }
 
-    public JPanel getTopPanel() {
-        return topPanel;
-    }
-
     public String getUsername() {
         return username;
     }
 
-    public JList getUsersList() {
-        return usersList;
-    }
-
     public DefaultListModel getUserListModel() {
-        return (DefaultListModel)usersList.getModel();
+        return (DefaultListModel) usersList.getModel();
     }
 }
