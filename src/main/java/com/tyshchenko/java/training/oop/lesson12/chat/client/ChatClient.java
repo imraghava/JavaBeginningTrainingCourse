@@ -1,4 +1,4 @@
-package com.tyshchenko.java.training.oop.lesson12.chat.server;
+package com.tyshchenko.java.training.oop.lesson12.chat.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,15 +6,14 @@ import java.awt.*;
 /**
  * @author Alexander Tyshchenko.
  */
-public class Server {
+public class ChatClient {
 
     public static void main(String[] args) {
-        Server server = new Server();
-        server.start();
+        ChatClient client = new ChatClient();
+        client.start();
     }
 
     public void start() {
-
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -27,7 +26,7 @@ public class Server {
         }
 
         EventQueue.invokeLater(() -> {
-            ServerChatForm frame = new ServerChatForm("ServerChatForm");
+            ClientChatForm frame = new ClientChatForm("ClientChatForm");
             frame.setContentPane(frame.getContentPanel());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();

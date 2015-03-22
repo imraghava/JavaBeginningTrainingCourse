@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class ClientThread extends Thread {
 
-    public SocketServerThread server = null;
+    public ServerThread server = null;
     public Socket socket = null;
     public int userId = -1;
     public String username = "";
@@ -20,7 +20,7 @@ public class ClientThread extends Thread {
     public ObjectOutputStream socketOutputStream = null;
     public ServerChatForm serverChatForm;
 
-    public ClientThread(SocketServerThread server, Socket socket) {
+    public ClientThread(ServerThread server, Socket socket) {
         this.server = server;
         this.socket = socket;
         userId = this.socket.getPort();
@@ -50,7 +50,7 @@ public class ClientThread extends Thread {
             } catch (Exception ioe) {
                 System.out.println(userId + " ERROR reading: " + ioe.getMessage());
                 server.remove(userId);
-                break;
+                interrupt();
             }
         }
     }

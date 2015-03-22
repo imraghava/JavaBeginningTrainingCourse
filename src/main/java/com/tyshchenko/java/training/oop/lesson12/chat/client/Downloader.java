@@ -9,7 +9,7 @@ import java.net.Socket;
 /**
  * @author Alexander Tyshchenko.
  */
-public class Download implements Runnable {
+public class Downloader implements Runnable {
 
     private ServerSocket server;
     private Socket socket;
@@ -19,7 +19,7 @@ public class Download implements Runnable {
     private FileOutputStream fileOutputStream;
     private ClientChatForm clientChatForm;
 
-    public Download(String saveTo, ClientChatForm clientChatForm) {
+    public Downloader(String saveTo, ClientChatForm clientChatForm) {
         try {
             server = new ServerSocket(0);
             port = server.getLocalPort();

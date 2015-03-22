@@ -24,7 +24,7 @@ public class History {
         this.filePath = filePath;
     }
 
-    public void addMessage(Message msg, String time) {
+    public void addMessage(Message msg, String msgTime) {
 
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -34,19 +34,19 @@ public class History {
             Node data = doc.getFirstChild();
 
             Element message = doc.createElement("message");
-            Element _sender = doc.createElement("sender");
-            _sender.setTextContent(msg.sender);
-            Element _content = doc.createElement("content");
-            _content.setTextContent(msg.content);
-            Element _recipient = doc.createElement("recipient");
-            _recipient.setTextContent(msg.recipient);
-            Element _time = doc.createElement("time");
-            _time.setTextContent(time);
+            Element sender = doc.createElement("sender");
+            sender.setTextContent(msg.sender);
+            Element content = doc.createElement("content");
+            content.setTextContent(msg.content);
+            Element recipient = doc.createElement("recipient");
+            recipient.setTextContent(msg.recipient);
+            Element time = doc.createElement("time");
+            time.setTextContent(msgTime);
 
-            message.appendChild(_sender);
-            message.appendChild(_content);
-            message.appendChild(_recipient);
-            message.appendChild(_time);
+            message.appendChild(sender);
+            message.appendChild(content);
+            message.appendChild(recipient);
+            message.appendChild(time);
             data.appendChild(message);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -77,7 +77,11 @@ public class History {
                 Node nNode = nList.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    model.addRow(new Object[]{getTagValue("sender", eElement), getTagValue("content", eElement), getTagValue("recipient", eElement), getTagValue("time", eElement)});
+                    model.addRow(new Object[]{
+                            getTagValue("sender", eElement),
+                            getTagValue("content", eElement),
+                            getTagValue("recipient", eElement),
+                            getTagValue("time", eElement)});
                 }
             }
         } catch (Exception ex) {

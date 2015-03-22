@@ -8,8 +8,8 @@ import java.io.File;
  */
 public class ServerChatForm extends JFrame {
 
-    private SocketServerThread server;
-    private String filePath = "src/main/resources/oop/lesson11/database.xml";
+    private ServerThread server;
+    private String filePath = "src/main/resources/oop/lesson12/database.xml";
     private JFileChooser fileChooser = new JFileChooser();
 
     private JPanel contentPanel;
@@ -39,7 +39,7 @@ public class ServerChatForm extends JFrame {
             });
         buttonStartServer.addActionListener(
             e -> {
-                server = new SocketServerThread(this);
+                server = new ServerThread(this);
                 buttonStartServer.setEnabled(false);
                 buttonBrowseDatabaseFile.setEnabled(false);
             });
@@ -54,14 +54,14 @@ public class ServerChatForm extends JFrame {
         if (server != null) {
             server.stop();
         }
-        server = new SocketServerThread(this, port);
+        server = new ServerThread(this, port);
     }
 
     public String getFilePath() {
         return filePath;
     }
 
-    public SocketServerThread getServer() {
+    public ServerThread getServer() {
         return server;
     }
 

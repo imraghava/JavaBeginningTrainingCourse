@@ -30,7 +30,7 @@ public class Message implements Serializable {
                 '}';
     }
 
-    public static enum Type {
+    public enum Type {
         MESSAGE,
         LOGIN,
         PING,

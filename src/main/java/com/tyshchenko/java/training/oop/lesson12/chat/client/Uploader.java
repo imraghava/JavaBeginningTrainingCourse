@@ -9,14 +9,14 @@ import java.net.Socket;
 /**
  * @author Alexander Tyshchenko.
  */
-public class Upload implements Runnable {
+public class Uploader implements Runnable {
 
     private String address;
     private int port;
     private File file;
     private ClientChatForm clientChatForm;
 
-    public Upload(String address, int port, File file, ClientChatForm clientChatForm) {
+    public Uploader(String address, int port, File file, ClientChatForm clientChatForm) {
         this.file = file;
         this.port = port;
         this.clientChatForm = clientChatForm;

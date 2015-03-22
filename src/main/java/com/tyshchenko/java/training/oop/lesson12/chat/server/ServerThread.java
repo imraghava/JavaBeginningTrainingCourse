@@ -10,39 +10,41 @@ import java.net.Socket;
 /**
  * @author Alexander Tyshchenko.
  */
-public class SocketServerThread implements Runnable {
+public class ServerThread implements Runnable {
 
+    private static final int maxClients = 50;
     private ClientThread clients[];
     private ServerSocket socket = null;
     private Thread thread = null;
     private int clientCount = 0;
-    private int port = 13000;
+    private int port = 9999;
     private ServerChatForm serverChatForm;
-    private Database db;
+    private Database database;
 
-    public SocketServerThread(ServerChatForm serverChatForm) {
+    public ServerThread(ServerChatForm serverChatForm) {
 
-        clients = new ClientThread[50];
+        clients = new ClientThread[maxClients];
         this.serverChatForm = serverChatForm;
-        db = new Database(serverChatForm.getFilePath());
+        database = new Database(serverChatForm.getFilePath());
 
         try {
             socket = new ServerSocket(port);
             port = socket.getLocalPort();
             serverChatForm.getTextArea().append("Server started. IP : " + InetAddress.getLocalHost() + ", Port : " + socket.getLocalPort());
-            start();
+            thread = new Thread(this);
+            thread.start();
         } catch (IOException ioe) {
             serverChatForm.getTextArea().append("Can not bind to port : " + port + "\nRetrying");
             serverChatForm.retryStart(0);
         }
     }
 
-    public SocketServerThread(ServerChatForm serverChatForm, int port) {
+    public ServerThread(ServerChatForm serverChatForm, int port) {
 
-        clients = new ClientThread[50];
+        clients = new ClientThread[maxClients];
         this.serverChatForm = serverChatForm;
         this.port = port;
-        db = new Database(serverChatForm.getFilePath());
+        database = new Database(serverChatForm.getFilePath());
 
         try {
             socket = new ServerSocket(this.port);
@@ -51,11 +53,12 @@ public class SocketServerThread implements Runnable {
             start();
         } catch (IOException ioe) {
             serverChatForm.getTextArea().append("\nCan not bind to port " + this.port + ": " + ioe.getMessage());
+            serverChatForm.retryStart(0);
         }
     }
 
     public void run() {
-        while (thread != null) {
+        while (!thread.isInterrupted()) {
             try {
                 serverChatForm.getTextArea().append("\nWaiting for a client ...");
                 addThread(socket.accept());
@@ -80,81 +83,81 @@ public class SocketServerThread implements Runnable {
         }
     }
 
-    private int findClient(int ID) {
+    private int findClient(int userId) {
         for (int i = 0; i < clientCount; i++) {
-            if (clients[i].getUserId() == ID) {
+            if (clients[i].getUserId() == userId) {
                 return i;
             }
         }
         return -1;
     }
 
-    public synchronized void handle(int ID, Message msg) {
-        if (msg.content != null && msg.content.equals(".bye")) {
-            announce(Message.Type.SIGN_OUT, "SERVER", msg.sender);
+    public synchronized void handle(int ID, Message message) {
+        if (message.content != null && message.content.equals(".bye")) {
+            announce(Message.Type.SIGN_OUT, "SERVER", message.sender);
             remove(ID);
         } else {
 
-            switch (msg.type) {
+            switch (message.type) {
                 case LOGIN: {
-                    if (findUserThread(msg.sender) == null) {
-//                    if (db.checkLogin(msg.sender, msg.content)) {
-                        clients[findClient(ID)].username = msg.sender;
-                        clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "TRUE", msg.sender));
-                        announce(Message.Type.NEW_USER, "SERVER", msg.sender);
-                        sendUserList(msg.sender);
+                    if (findUserThread(message.sender) == null) {
+//                    if (database.checkLogin(message.sender, message.content)) {
+                        clients[findClient(ID)].username = message.sender;
+                        clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "TRUE", message.sender));
+                        announce(Message.Type.NEW_USER, "SERVER", message.sender);
+                        sendUserList(message.sender);
 //                    } else {
-//                        clients[findClient(userId)].send(new Message("login", "SERVER", "FALSE", msg.sender));
+//                        clients[findClient(userId)].send(new Message("login", "SERVER", "FALSE", message.sender));
 //                    }
                     } else {
-                        clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "FALSE", msg.sender));
+                        clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "FALSE", message.sender));
                     }
                     break;
                 }
                 case MESSAGE: {
-                    if (msg.recipient.equals("All")) {
-                        announce(Message.Type.MESSAGE, msg.sender, msg.content);
+                    if (message.recipient.equals("All")) {
+                        announce(Message.Type.MESSAGE, message.sender, message.content);
                     } else {
-                        findUserThread(msg.recipient).send(new Message(msg.type, msg.sender, msg.content, msg.recipient));
-                        clients[findClient(ID)].send(new Message(msg.type, msg.sender, msg.content, msg.recipient));
+                        findUserThread(message.recipient).send(new Message(message.type, message.sender, message.content, message.recipient));
+                        clients[findClient(ID)].send(new Message(message.type, message.sender, message.content, message.recipient));
                     }
                     break;
                 }
                 case PING: {
-                    clients[findClient(ID)].send(new Message(Message.Type.PING, "SERVER", "OK", msg.sender));
+                    clients[findClient(ID)].send(new Message(Message.Type.PING, "SERVER", "OK", message.sender));
                     break;
                 }
                 case SIGN_UP: {
-                    if (findUserThread(msg.sender) == null) {
-//                        if (!db.userExists(msg.sender)) {
-                            db.addUser(msg.sender, msg.content);
-                            clients[findClient(ID)].username = msg.sender;
-                            clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "TRUE", msg.sender));
-                            clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "TRUE", msg.sender));
-                            announce(Message.Type.NEW_USER, "SERVER", msg.sender);
-                            sendUserList(msg.sender);
+                    if (findUserThread(message.sender) == null) {
+//                        if (!database.userExists(message.sender)) {
+                            database.addUser(message.sender, message.content);
+                            clients[findClient(ID)].username = message.sender;
+                            clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "TRUE", message.sender));
+                            clients[findClient(ID)].send(new Message(Message.Type.LOGIN, "SERVER", "TRUE", message.sender));
+                            announce(Message.Type.NEW_USER, "SERVER", message.sender);
+                            sendUserList(message.sender);
 //                        } else {
-//                            clients[findClient(userId)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", msg.sender));
+//                            clients[findClient(userId)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", message.sender));
 //                        }
                     } else {
-                        clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", msg.sender));
+                        clients[findClient(ID)].send(new Message(Message.Type.SIGN_UP, "SERVER", "FALSE", message.sender));
                     }
                     break;
                 }
                 case UPLOAD_REQUEST: {
-                    if (msg.recipient.equals("All")) {
-                        clients[findClient(ID)].send(new Message(Message.Type.MESSAGE, "SERVER", "Uploading to 'All' forbidden", msg.sender));
+                    if (message.recipient.equals("All")) {
+                        clients[findClient(ID)].send(new Message(Message.Type.MESSAGE, "SERVER", "Uploading to 'All' forbidden", message.sender));
                     } else {
-                        findUserThread(msg.recipient).send(new Message(Message.Type.UPLOAD_REQUEST, msg.sender, msg.content, msg.recipient));
+                        findUserThread(message.recipient).send(new Message(Message.Type.UPLOAD_REQUEST, message.sender, message.content, message.recipient));
                     }
                     break;
                 }
                 case UPLOAD_RESPONSE: {
-                    if (!msg.content.equals("NO")) {
-                        String IP = findUserThread(msg.sender).socket.getInetAddress().getHostAddress();
-                        findUserThread(msg.recipient).send(new Message(Message.Type.UPLOAD_RESPONSE, IP, msg.content, msg.recipient));
+                    if (!message.content.equals("NO")) {
+                        String IP = findUserThread(message.sender).socket.getInetAddress().getHostAddress();
+                        findUserThread(message.recipient).send(new Message(Message.Type.UPLOAD_RESPONSE, IP, message.content, message.recipient));
                     } else {
-                        findUserThread(msg.recipient).send(new Message(Message.Type.UPLOAD_RESPONSE, msg.sender, msg.content, msg.recipient));
+                        findUserThread(message.recipient).send(new Message(Message.Type.UPLOAD_RESPONSE, message.sender, message.content, message.recipient));
                     }
                     break;
                 }
@@ -187,7 +190,7 @@ public class SocketServerThread implements Runnable {
     public synchronized void remove(int userId) {
         int pos = findClient(userId);
         if (pos >= 0) {
-            ClientThread toTerminate = clients[pos];
+            ClientThread client = clients[pos];
             serverChatForm.getTextArea().append("\nRemoving client thread " + userId + " at " + pos);
             if (pos < clientCount - 1) {
                 for (int i = pos + 1; i < clientCount; i++) {
@@ -196,7 +199,7 @@ public class SocketServerThread implements Runnable {
             }
             clientCount--;
             try {
-                toTerminate.close();
+                client.close();
             } catch (IOException ioe) {
                 serverChatForm.getTextArea().append("\nError closing thread: " + ioe);
             }

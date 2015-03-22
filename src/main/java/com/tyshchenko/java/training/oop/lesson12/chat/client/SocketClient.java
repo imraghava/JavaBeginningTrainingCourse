@@ -61,7 +61,11 @@ public class SocketClient implements Runnable {
                             try {
                                 history.addMessage(message, msgTime);
                                 DefaultTableModel table = (DefaultTableModel) clientChatForm.getHistoryFrame().getHistoryTable().getModel();
-                                table.addRow(new Object[]{message.sender, message.content, "Me", msgTime});
+                                table.addRow(new Object[]{
+                                        message.sender,
+                                        message.content,
+                                        "Me",
+                                        msgTime});
                             } catch (Exception ex) {
                             }
                         }
@@ -70,7 +74,6 @@ public class SocketClient implements Runnable {
                     case LOGIN: {
                         if (message.content.equals("TRUE")) {
                             clientChatForm.getButtonLogin().setEnabled(false);
-                            clientChatForm.getButtonSignUp().setEnabled(true);
                             clientChatForm.getButtonSendMessage().setEnabled(true);
                             clientChatForm.getButtonBrowseFile().setEnabled(true);
                             clientChatForm.getTextFieldMessage().setEnabled(true);
@@ -114,7 +117,6 @@ public class SocketClient implements Runnable {
                             clientChatForm.getButtonLogin().setEnabled(false);
                             clientChatForm.getButtonSignUp().setEnabled(false);
                             clientChatForm.getButtonSendMessage().setEnabled(true);
-//                        clientChatForm.button3.setEnabled(true);
                             clientChatForm.getClientArea().append("[SERVER > Me] : Singup Successful\n");
                         } else {
                             clientChatForm.getClientArea().append("[SERVER > Me] : Signup Failed\n");
@@ -143,16 +145,15 @@ public class SocketClient implements Runnable {
                     case UPLOAD_REQUEST: {
                         if (JOptionPane.showConfirmDialog(clientChatForm, ("Accept '" + message.content + "' from " + message.sender + " ?")) == 0) {
 
-                            JFileChooser jf = new JFileChooser();
-                            jf.setSelectedFile(new File(message.content));
-                            int returnVal = jf.showSaveDialog(clientChatForm);
+                            JFileChooser fileChooser = new JFileChooser();
+                            fileChooser.setSelectedFile(new File(message.content));
+                            int returnVal = fileChooser.showSaveDialog(clientChatForm);
 
-                            String saveTo = jf.getSelectedFile().getPath();
+                            String saveTo = fileChooser.getSelectedFile().getPath();
                             if (saveTo != null && returnVal == JFileChooser.APPROVE_OPTION) {
-                                Download dwn = new Download(saveTo, clientChatForm);
-                                Thread t = new Thread(dwn);
-                                t.start();
-                                //send(new Message("upload_res", (""+InetAddress.getLocalHost().getHostAddress()), (""+dwn.port), msg.sender));
+                                Downloader dwn = new Downloader(saveTo, clientChatForm);
+                                Thread downloader = new Thread(dwn);
+                                downloader.start();
                                 send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), ("" + dwn.getPort()), message.sender));
                             } else {
                                 send(new Message(Type.UPLOAD_RESPONSE, clientChatForm.getUsername(), "NO", message.sender));
@@ -165,11 +166,9 @@ public class SocketClient implements Runnable {
                     case UPLOAD_RESPONSE: {
                         if (!message.content.equals("NO")) {
                             int port = Integer.parseInt(message.content);
-                            String addr = message.sender;
-
-//                        clientChatForm.button3.setEnabled(false);
+                            String address = message.sender;
                             clientChatForm.getButtonSendFile().setEnabled(false);
-                            Upload upl = new Upload(addr, port, clientChatForm.getFile(), clientChatForm);
+                            Uploader upl = new Uploader(address, port, clientChatForm.getFile(), clientChatForm);
                             Thread t = new Thread(upl);
                             t.start();
                         } else {
@@ -188,8 +187,6 @@ public class SocketClient implements Runnable {
                 clientChatForm.getTextFieldHostAddress().setEditable(true);
                 clientChatForm.getTextFieldHostPort().setEditable(true);
                 clientChatForm.getButtonSendMessage().setEnabled(false);
-//                clientChatForm.button3.setEnabled(false);
-//                clientChatForm.button3.setEnabled(false);
 
                 for (int i = 1; i < clientChatForm.getUserListModel().size(); i++) {
                     clientChatForm.getUserListModel().removeElementAt(i);
@@ -221,10 +218,6 @@ public class SocketClient implements Runnable {
         } catch (IOException ex) {
             System.out.println("Exception SocketClient send()");
         }
-    }
-
-    public void closeThread(Thread t) {
-        t = null;
     }
 
 }
