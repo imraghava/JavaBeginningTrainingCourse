@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class ClientChatForm extends JFrame {
 
-    private SocketClient client;
+    private SocketClient socketClient;
     private int port;
     private String serverAddress;
     private String username;
@@ -59,10 +59,10 @@ public class ClientChatForm extends JFrame {
 
             if (!serverAddress.isEmpty() && !textFieldHostPort.getText().isEmpty()) {
                 try {
-                    client = new SocketClient(this);
-                    clientThread = new Thread(client);
+                    socketClient = new SocketClient(this);
+                    clientThread = new Thread(socketClient);
                     clientThread.start();
-                    client.send(new Message(Message.Type.PING, "testUser", "testContent", "SERVER"));
+                    socketClient.send(new Message(Message.Type.PING, "testUser", "testContent", "SERVER"));
                 } catch (Exception ex) {
                     clientArea.append("[Application > Me] : Server not found\n");
                 }
@@ -73,7 +73,7 @@ public class ClientChatForm extends JFrame {
 //            password = new String(textFieldPassword.getPassword());
 
             if (!username.isEmpty() /*&& !password.isEmpty()*/) {
-                client.send(new Message(Message.Type.LOGIN, username, password, "SERVER"));
+                socketClient.send(new Message(Message.Type.LOGIN, username, password, "SERVER"));
             }
         });
         buttonSignUp.addActionListener(e -> {
@@ -81,7 +81,7 @@ public class ClientChatForm extends JFrame {
 //            password = new String(textFieldPassword.getPassword());
 
             if (!username.isEmpty() /*&& !password.isEmpty()*/) {
-                client.send(new Message(Message.Type.SIGN_UP, username, password, "SERVER"));
+                socketClient.send(new Message(Message.Type.SIGN_UP, username, password, "SERVER"));
             }
         });
         buttonSendMessage.addActionListener(e -> {
@@ -90,7 +90,7 @@ public class ClientChatForm extends JFrame {
 
             if (!msg.isEmpty() && !target.isEmpty()) {
                 textFieldMessage.setText("");
-                client.send(new Message(Message.Type.MESSAGE, username, msg, target));
+                socketClient.send(new Message(Message.Type.MESSAGE, username, msg, target));
             }
         });
         buttonShowHistory.addActionListener(e -> {
@@ -136,7 +136,7 @@ public class ClientChatForm extends JFrame {
         buttonSendFile.addActionListener(e -> {
             long size = file.length();
             if (size < 120 * 1024 * 1024) {
-                client.send(new Message(Message.Type.UPLOAD_REQUEST, username, file.getName(), usersList.getSelectedValue().toString()));
+                socketClient.send(new Message(Message.Type.UPLOAD_REQUEST, username, file.getName(), usersList.getSelectedValue().toString()));
             } else {
                 clientArea.append("[Application > Me] : File is size too large\n");
             }
@@ -180,8 +180,8 @@ public class ClientChatForm extends JFrame {
         return buttonSignUp;
     }
 
-    public SocketClient getClient() {
-        return client;
+    public SocketClient getSocketClient() {
+        return socketClient;
     }
 
     public Thread getClientThread() {

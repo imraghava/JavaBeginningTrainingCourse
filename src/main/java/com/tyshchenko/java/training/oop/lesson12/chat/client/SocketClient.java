@@ -168,9 +168,8 @@ public class SocketClient implements Runnable {
                             int port = Integer.parseInt(message.content);
                             String address = message.sender;
                             clientChatForm.getButtonSendFile().setEnabled(false);
-                            Uploader upl = new Uploader(address, port, clientChatForm.getFile(), clientChatForm);
-                            Thread t = new Thread(upl);
-                            t.start();
+                            Thread uploader = new Thread(new Uploader(address, port, clientChatForm.getFile(), clientChatForm));
+                            uploader.start();
                         } else {
                             clientChatForm.getClientArea().append("[SERVER > Me] : " + message.sender + " rejected file request\n");
                         }

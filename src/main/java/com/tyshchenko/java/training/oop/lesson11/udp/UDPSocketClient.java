@@ -15,7 +15,7 @@ public class UDPSocketClient {
     }
 
     public void createAndListenSocket() {
-            try(DatagramSocket socket = new DatagramSocket()) {
+        try(DatagramSocket socket = new DatagramSocket()) {
 
             InetAddress IPAddress = InetAddress.getByName("localhost");
             byte[] incomingData = new byte[1024];
