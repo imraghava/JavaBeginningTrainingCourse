@@ -18,7 +18,7 @@ public class UDPSocketServer {
     }
 
     public void createAndListenSocket() {
-        try(DatagramSocket socket = new DatagramSocket(9876)) {
+        try(DatagramSocket socket = new DatagramSocket(9999)) {
             byte[] incomingData = new byte[1024];
 
             while (true) {

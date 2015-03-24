@@ -15,13 +15,13 @@ public class UDPSocketClient {
     }
 
     public void createAndListenSocket() {
-        try(DatagramSocket socket = new DatagramSocket()) {
+            try(DatagramSocket socket = new DatagramSocket()) {
 
             InetAddress IPAddress = InetAddress.getByName("localhost");
             byte[] incomingData = new byte[1024];
             String sentence = "This is a message from client";
             byte[] data = sentence.getBytes();
-            DatagramPacket sendPacket = new DatagramPacket(data, data.length, IPAddress, 9876);
+            DatagramPacket sendPacket = new DatagramPacket(data, data.length, IPAddress, 9999);
             socket.send(sendPacket);
             System.out.println("Message sent from client");
             DatagramPacket incomingPacket = new DatagramPacket(incomingData, incomingData.length);
