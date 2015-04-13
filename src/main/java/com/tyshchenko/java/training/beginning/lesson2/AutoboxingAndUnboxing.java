@@ -6,14 +6,14 @@ package com.tyshchenko.java.training.beginning.lesson2;
 public class AutoboxingAndUnboxing {
     public static void main(String[] args) {
         //before autoboxing
-        Integer iObject;
-        int iPrimitive;
+        Integer intObject;
+        int intPrimitive;
 
-        iObject = Integer.valueOf(3);
-        iPrimitive = iObject.intValue();
+        intObject = Integer.valueOf(3);
+        intPrimitive = intObject.intValue();
 
         //after java 1.5
-        iObject = 3; //autoboxing - primitive to wrapper conversion
-        iPrimitive = iObject; //unboxing - object to primitive conversion
+        intObject = 3; //autoboxing - primitive to wrapper conversion
+        intPrimitive = intObject; //unboxing - object to primitive conversion
     }
 }

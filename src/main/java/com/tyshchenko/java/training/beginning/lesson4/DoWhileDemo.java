@@ -12,5 +12,3 @@ public class DoWhileDemo {
         } while (count < 11);
     }
 }
-
-

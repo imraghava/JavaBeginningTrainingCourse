@@ -14,5 +14,3 @@ public class ConditionalDemo {
         System.out.println(result);
     }
 }
-
-

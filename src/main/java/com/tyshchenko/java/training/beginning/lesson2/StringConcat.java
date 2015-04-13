@@ -8,26 +8,15 @@ public class StringConcat {
         String s1 = "test";
         String s2 = "test";
 
-        String s3 = s1 + s2;
+        String result = s1 + s2;
 
-        String[] m = {"1", "2", "3", "4"};
+        String[] strings = {"1", "2", "3", "4"};
 
-        double ar2[] = {3.14, 2, 5.5};
+        double doubles[] = { 3.14, 2, 5.5 };
 
-        double a = 1;
-
-        for (int i = 0; i < m.length; i++) {
-            s3 += m[i];
+        for (int i = 0; i < strings.length; i++) {
+            result += strings[i];
         }
-
-
-
-
-
-
-
+        System.out.println(result);
     }
-
-
-
 }

@@ -20,6 +20,3 @@ public class ContinueDemo {
         System.out.println("Found " + numPs + " p's in the string.");
     }
 }
-
-
-

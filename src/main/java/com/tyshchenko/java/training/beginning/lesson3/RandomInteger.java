@@ -19,6 +19,3 @@ public class RandomInteger {
         System.out.println("Done.");
     }
 }
-
-
-

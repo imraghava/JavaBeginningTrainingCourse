@@ -11,6 +11,3 @@ public class ModulusExample {
         System.out.println(c);
     }
 }
-
-
-

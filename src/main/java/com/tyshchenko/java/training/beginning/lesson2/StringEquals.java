@@ -14,6 +14,6 @@ public class StringEquals {
         System.out.println(s2.equals(s1));
         System.out.println(s1.equalsIgnoreCase(s2));
 
-        System.out.println(((short) 'A'));
+        System.out.println((short) 'A');
     }
 }

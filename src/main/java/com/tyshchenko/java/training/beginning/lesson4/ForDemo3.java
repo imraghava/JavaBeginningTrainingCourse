@@ -18,6 +18,3 @@ public class ForDemo3 {
         }
     }
 }
-
-
-

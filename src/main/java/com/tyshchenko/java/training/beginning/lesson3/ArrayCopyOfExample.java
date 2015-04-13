@@ -22,5 +22,3 @@ public class ArrayCopyOfExample {
         System.out.println(Arrays.toString(arr2));
     }
 }
-
-

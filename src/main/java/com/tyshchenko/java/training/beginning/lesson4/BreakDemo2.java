@@ -17,5 +17,3 @@ public class BreakDemo2 {
         System.out.println("Loop is finished");
     }
 }
-
-
