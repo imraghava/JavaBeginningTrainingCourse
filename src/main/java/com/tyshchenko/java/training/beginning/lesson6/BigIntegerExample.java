@@ -8,17 +8,16 @@ import java.util.Arrays;
  */
 public class BigIntegerExample {
     public static void main(String[] args) {
-        BigInteger i1 = new BigInteger("342354678352476834526783457683245786");
-        BigInteger i2 = new BigInteger("9645879834765893748763745868723465723457862345");
+        BigInteger a = new BigInteger("342354678352476834526783457683245786");
+        BigInteger b = new BigInteger("9645879834765893748763745868723465723457862345");
 
+        System.out.println("a + b = " + a.add(b));
+        System.out.println("a - b = " + a.subtract(b));
+        System.out.println("a * b = " + a.multiply(b));
+        System.out.println("a / b = " + a.divide(b));
+        System.out.println("b / a = " + b.divide(a));
 
-
-        System.out.println(i1.add(i2));
-        System.out.println(i1.subtract(i2));
-        System.out.println(i2.multiply(i1));
-        System.out.println(i2.divide(i1));
-
-        byte[] b = i1.toByteArray();
-        System.out.println(Arrays.toString(b));
+        byte[] array = b.toByteArray();
+        System.out.println(Arrays.toString(array));
     }
 }

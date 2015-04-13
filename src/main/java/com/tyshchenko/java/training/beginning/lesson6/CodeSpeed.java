@@ -3,7 +3,7 @@ package com.tyshchenko.java.training.beginning.lesson6;
 /**
  * @author Alexander Tyshchenko.
  */
-public class CodeSpeedTest {
+public class CodeSpeed {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 

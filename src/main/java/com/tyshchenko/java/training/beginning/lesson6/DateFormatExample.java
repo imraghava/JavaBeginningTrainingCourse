@@ -9,27 +9,25 @@ import java.util.Date;
  */
 public class DateFormatExample {
     public static void main(String[] args) {
-        Date dt = new Date();
-        System.out.println(dt);
+        Date date = new Date();
+        System.out.println(date);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:S");
-        String res = sdf.format(dt);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:S");
+        String res = format.format(date);
         System.out.println(res);
 
-        sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        res = sdf.format(dt);
+        format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        res = format.format(date);
         System.out.println(res);
 
-        sdf = new SimpleDateFormat("dd.MM.yy D");
-        res = sdf.format(dt);
+        format = new SimpleDateFormat("dd.MM.yy D");
+        res = format.format(date);
         System.out.println(res);
 
         try {
-            sdf.parse("");
+            format.parse("");
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
     }
 }
