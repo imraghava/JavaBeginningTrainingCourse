@@ -2,8 +2,6 @@
 These are the training course materials for introduction to Java Programming Language.
 [Course materials](https://drive.google.com/open?id=0BybnNyNT35v5UGlYT3oxYWNaQXM)
 
-# [!!!Прочитать!!!] (https://drive.google.com/open?id=1YTiPvQimLmU0XiyjvLKXCHi5ONEkWnJyQkbm5yPAnJg&authuser=0)
-
 #### Contents
 * **Lesson1**. Java history. Advantages of Java. Difference between JDK and JRE. Java Platforms (SE, EE, ME, FX, Card). First java program.
 * **Lesson2**. Creating variables. Java data types. Java literals. Arithmetic operations. Integer and floating point operations. Java data types conversions. Strings in java (StringBuilder vs StringBuffer). Operations with strings. Increment and decrement. Variable scopes.
