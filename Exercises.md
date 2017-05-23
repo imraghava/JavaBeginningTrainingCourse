@@ -33,6 +33,18 @@
     строик использовать массив. Далее подсчитать колличество символов во всех строках массива.
 - Задана строка
     ```
+    String str = "variable";
+    ```
+   Поменять местами группы символов по 2
+   
+   _Например_
+   
+   ```
+   String example = "java"   => "ajav" 
+   ```
+   
+- Задана строка
+    ```
     String str = "The Java programming language is a relatively high-level language, in that details of the machine representation are not available through the language.";
     ```
     Из данной строки нужно получить строку которая будет состоять из первых символов слов
