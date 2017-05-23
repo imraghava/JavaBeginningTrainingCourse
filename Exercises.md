@@ -42,7 +42,14 @@
    ```
    String example = "java"   => "ajav" 
    ```
-   
+- Написать программу которая определяет является ли введенная строка палиндромом
+    
+    _Например_
+    
+    ```
+    "Anna", "Civic", "Kayak", "Racecar" => палиндромы
+    "java", "maven", "git", "programming" => не палиндромы
+    ```
 - Задана строка
     ```
     String str = "The Java programming language is a relatively high-level language, in that details of the machine representation are not available through the language.";
