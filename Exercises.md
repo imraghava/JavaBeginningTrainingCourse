@@ -142,6 +142,17 @@
     
     String out = "knK"; 
     ```
+- Задана строка
+    ```
+    String str = "sdgHjhgJHGHJggSLsjLKSkjhkjhSjhkSkhsk:LkS"
+    ```
+    Определить колличество символов в верхнем регистре
+    
+    _Например_
+    
+    ```
+    String example = "abcEljkR" => 2
+    ```
 
 ### Mасcивы
 - Задан массив
