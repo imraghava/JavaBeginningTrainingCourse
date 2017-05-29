@@ -55,6 +55,17 @@
    ```
    String example = "java"   => "ajav" 
    ```
+- Сделать реверс строки
+    ```
+    String str = "The Java Virtual Machine"
+    ```
+    
+    _Например_
+    
+    ```
+    String example = "java" => "avaj"
+    ```
+    
 - Написать программу которая определяет является ли введенная строка палиндромом
     
     _Например_
@@ -117,6 +128,7 @@
     
     ```
     String example = "1134" => 11 * 34 = 374
+    String example = "10112233" => 10 * 11 and 22 * 33
     ```
     
 - Задана строка
@@ -141,6 +153,7 @@
     
     ```
     String example = "loL";
+    
     l - ASCII code 108 => 108 - 1 = 107 is code k
     o - ASCII code 111 => 111 - 1 = 110 is code n
     L - ASCII code  76 => 76 - 1 = 75 is code K
