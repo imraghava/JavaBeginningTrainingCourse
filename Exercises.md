@@ -103,7 +103,17 @@
     ```
     Результат должен быть **_"et"_**
     
-    
+- Задана строка
+   ```
+   String str = "Java Programming"
+   ```
+   После каждого символа в строке вставить например символ '1'
+   
+   _Например_
+   
+   ```
+   String example = "java" => "j1a1v1a1"
+   ```
 - Задана строка-предложение
     ```
     String str = "The Java programming language is a general-purpose, concurrent, class-based, object-oriented language."
