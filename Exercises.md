@@ -186,6 +186,33 @@
     ```
     String example = "abcEljkR" => 2
     ```
+- Задан миссив трок
+    ```
+    String[] array = {
+                        "java",
+                        "maven",
+                        "git",
+                        "programming",
+                        "svn"
+                    }
+    ```
+    Результатом должна быть строка которая будет содержать в "склееном" виде строки из
+    массива таким образом, что каждое "склеивание" должно происходить не вконец 
+    предыдущей строки а на метосто предпоследнего символа
+    
+    _Например_
+    
+    ```
+    String example = {
+                        "scala",
+                        "python",       
+                        go
+                    }
+        first iteration     => "scala"
+        second iteration    => "scalpythona"
+        third iteration     => "scalpythongoa"
+        
+    ```
 - Задана строка
     ```
     String str = "JHGJHGhjgHGUYGUYSJJKhjhkjUIUIHJhjhKJHGK";
