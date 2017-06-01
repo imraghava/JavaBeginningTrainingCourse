@@ -95,6 +95,13 @@
     String str = "The Java programming language is strongly and statically typed"
     ```
     Найти сколько раз символ _**'a'**_ встречается в данной строке
+- Заданы два алгебраических уравнения в виде строки
+    ```
+    String equation1 = "(a + b) * (b + c)";
+    String equation2 = "(a + b) * (b + c) - (а + 4 + r))";
+    ``` 
+    Проверить два уравнения на валидность (в данном случае валидность воспринимать как
+    колличество открытых и закрытых скобок в уравнении)
 - Задана строка
     ```
     String str = "The Java programming language is strongly and statically typed."
