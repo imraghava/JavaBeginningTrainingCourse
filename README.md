@@ -10,7 +10,7 @@ Integer and floating point operations. Java data types conversions.
  trings in java (StringBuilder vs StringBuffer). Operations with strings.
  Increment and decrement. Variable scopes.
 * **Lesson3**. Arrays. Operations with arrays. Dwo dimensional arrays. java.util.Arrays.
-Random number generation. Class Object. Object methods.
+Random number generation. Class Object. Object's methods.
 * **Lesson4**. Logical and comparison operations in java.
 Priority operations. Conditional operators (if, if-else, switch).
 Loops (for, for-each, while, do-while). Operators (break, continue, return).
