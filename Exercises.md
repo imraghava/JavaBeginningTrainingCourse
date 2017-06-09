@@ -344,6 +344,12 @@
     ```
 - Задана строка
     ```
+    String str = "fdsgnsdfjfakjhakjhsajhgaisahagsfihakjshfakjshfkashfjkahsf";
+    ```
+    
+    В строке заменить все символы **'a'** на пробелы.
+- Задана строка
+    ```
     String str = "I want to become a programmer"
     ```
     
