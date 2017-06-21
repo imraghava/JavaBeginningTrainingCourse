@@ -414,6 +414,12 @@
         third iteration     => "scalpythongoa"
         
     ```
+- Задана строка
+    ```
+    String str = "Specific type conversions in the Java programming language are divided into 13 categories"
+    ```
+    Разбить данное предложение на строки по пробелу, в получившемся массива строк у каждой строки удалить
+    первый и последний символы, если строка состоит из 3 символом то данное преобразование не делать
 
 ### Mасcивы
 - Задан массив
