@@ -369,7 +369,12 @@
     String str = "asdjfhwuqyetrnzxbcvcpoxincumbniuoqwyenzxcbmzvnbcqtyrenbvzcpoiedsfmngb"
     ```
     Определить сколько согласных в данной строке (согласными в английском языке являются
-    6 букв - a, e, i, o, u, y)
+    **6** букв - a, e, i, o, u, y)
+- Задана строка
+    ```
+    String str = "sdkfjgskjdfnvjksdfngjkasdafkbvka,msndiugkhbahjdfdbncva"
+    ```
+    Определить колличество согласных букв
 - Задана строка
     ```
     String str = "fdsgnsdfjfakjhakjhsajhgaisahagsfihakjshfakjshfkashfjkahsf";
