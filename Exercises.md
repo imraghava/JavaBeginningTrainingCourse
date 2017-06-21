@@ -258,8 +258,8 @@
     Определить колличество пробелов в строке
 - Заданы два алгебраических уравнения в виде строки
     ```
-    String equation1 = "(a + b) * (b + c)";
-    String equation2 = "(a + b) * (b + c) - (а + 4 + r))";
+    String equation1 = "(a + b) * (b + c) = 0";
+    String equation2 = "(a + b) * (b + c) - (а + 4 + r)) = 0";
     ``` 
     Проверить два уравнения на валидность (в данном случае валидность воспринимать как
     колличество открытых и закрытых скобок в уравнении)
@@ -355,6 +355,23 @@
     ```
 - Задана строка
     ```
+    String str = "JHGJHGhjgHGUYGUYSJJKhjhkjUIUIHJhjhKJHGK";
+    ```
+    Определить количество символов в нижнем регистре
+    
+    _Например_
+    
+    ```
+    String example = "ABCdfKILFp" => 3 
+    ```
+- Задана строка
+    ```
+    String str = "asdjfhwuqyetrnzxbcvcpoxincumbniuoqwyenzxcbmzvnbcqtyrenbvzcpoiedsfmngb"
+    ```
+    Определить сколько согласных в данной строке (согласными в английском языке являются
+    6 букв - a, e, i, o, u, y)
+- Задана строка
+    ```
     String str = "fdsgnsdfjfakjhakjhsajhgaisahagsfihakjshfakjshfkashfjkahsf";
     ```
     
@@ -391,17 +408,6 @@
         second iteration    => "scalpythona"
         third iteration     => "scalpythongoa"
         
-    ```
-- Задана строка
-    ```
-    String str = "JHGJHGhjgHGUYGUYSJJKhjhkjUIUIHJhjhKJHGK";
-    ```
-    Определить количество символов в нижнем регистре
-    
-    _Например_
-    
-    ```
-    String example = "ABCdfKILFp" => 3 
     ```
 
 ### Mасcивы
