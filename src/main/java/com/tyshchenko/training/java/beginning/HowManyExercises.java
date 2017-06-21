@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class HowManyExercises {
     public static void main(String[] args) throws IOException {
+        int total = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader("./Exercises.md"))) {
             int exercises = 0;
             for (String line; (line = reader.readLine()) != null;) {
@@ -23,10 +24,13 @@ public class HowManyExercises {
                     System.out.println("Section - " + line.substring(3));
                     continue;
                 }
-                if (line.charAt(0) == '-')
+                if (line.charAt(0) == '-') {
                     ++exercises;
+                    ++total;
+                }
             }
             System.out.println("Exercises - " + exercises);
         }
+        System.out.println("\nTotal exercises - " + total);
     }
 }
