@@ -265,6 +265,11 @@
     колличество открытых и закрытых скобок в уравнении)
 - Задана строка
     ```
+    String str = "Talk is cheap. Show me the code." // (Linus Torvalds)
+    ```
+    Найти слова с макрсимальный колличеством символив и минимальным
+- Задана строка
+    ```
     String str = "The Java programming language is strongly and statically typed."
     ```
     Преобразовать строку таким образом, чтобы каждый парный символ входил в новую строку
