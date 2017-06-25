@@ -199,7 +199,7 @@
     ```
 - Задана строка
     ```
-    String str = "Java Programming"
+    String str = "I have always wished for my computer to be as easy to use as my telephone; my wish has come true because I can no longer figure out how to use my telephone."; // (Bjarne Stroustrup)
     ```
     Сконвертировать данную строку в массив **char[]** и вывести на консоль
 - Сгенерировать миллион строк, каждая строка должна содержать от 10 до 1000 символов, 
@@ -237,7 +237,7 @@
     ```
 - Задана строка
     ```
-    String str = "The Java programming language is a relatively high-level language, in that details of the machine representation are not available through the language.";
+    String str = "C is quirky, flawed, and an enormous success."; //  (Dennis M. Ritchie)
     ```
     Из данной строки нужно получить строку которая будет состоять из первых символов слов
      данной строки-предложения
@@ -248,31 +248,31 @@
     ```
 - Задана строка
     ```
-    String str = "The Java programming language is strongly and statically typed"
+    String str = "People think that computer science is the art of geniuses but the actual reality is the opposite, just many people doing things that build on each other, like a wall of mini stones."; // (Donald Knuth)
     ```
     Найти сколько раз символ _**'a'**_ встречается в данной строке
 - Задана строка
     ```
-    String str = "Write once, run anywhere"
+    String str = "Measuring programming progress by lines of code is like measuring aircraft building progress by weight."; // (Bill Gates)
     ```
-    Определить колличество пробелов в строке
+    Определить колличество пробелов в строке.
 - Заданы два алгебраических уравнения в виде строки
     ```
     String equation1 = "(a + b) * (b + c) = 0";
     String equation2 = "(a + b) * (b + c) - (а + 4 + r)) = 0";
     ``` 
     Проверить два уравнения на валидность (в данном случае валидность воспринимать как
-    колличество открытых и закрытых скобок в уравнении)
+    колличество открытых и закрытых скобок в уравнении).
 - Задана строка
     ```
     String str = "Talk is cheap. Show me the code." // (Linus Torvalds)
     ```
-    Найти слова с макрсимальный колличеством символив и минимальным
+    Найти слова с максимальный колличеством символив и минимальным.
 - Задана строка
     ```
     String str = "The Java programming language is strongly and statically typed."
     ```
-    Преобразовать строку таким образом, чтобы каждый парный символ входил в новую строку
+    Преобразовать строку таким образом, чтобы каждый парный символ входил в новую строку.
     
     _Например_ 
     
