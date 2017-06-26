@@ -216,6 +216,17 @@
    ```
    String example = "java"   => "ajav" 
    ```
+- Задана строка
+    ```
+    String str = "performance"
+    ```
+    Используя метод из класса String найти с какого индекса заданной строки начинается подстрока "for"
+    
+    _Например_
+    
+    ```
+    String example = "java" => подстрока 'va' начинается со 2 индекса
+    ```
 - Сделать реверс строки
     ```
     String str = "The Java Virtual Machine"
