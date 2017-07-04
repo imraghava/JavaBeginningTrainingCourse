@@ -306,6 +306,11 @@
     
     Результат должен быть => "et"
     ```
+- Задана строка
+    ```
+    String str = "sazxcdgberquikmn"
+    ```
+    Отсортировать символы в порядке возрастания кода ASCII 
 - Задана строка-предложение
     ```
     String str = "The Java programming language is a general-purpose, concurrent, class-based, object-oriented language."
