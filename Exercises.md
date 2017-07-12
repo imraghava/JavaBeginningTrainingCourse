@@ -424,6 +424,10 @@
     String str = "932759327459013874365"
     ```
     Отсортировать символы в строке в порядке возрастания и вывести получившеюся строку на консоль
+- Используя метод **join** из класса **String** произвести объединение в строку элементов массива по разделителю **-**
+    ```
+    String[] words = {"java", "jvm", "programming", "jit"}
+    ```
 - Задана строка-предложение
     ```
     String str = "The Java programming language is a general-purpose, concurrent, class-based, object-oriented language."
